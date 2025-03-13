@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Auto Chess</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Pokémon Auto Chess</h1>
+            <div class="player-stats">
+                <div class="gold">Gold: <span id="gold-amount">10</span></div>
+                <div class="health">Health: <span id="health-amount">100</span></div>
+                <div class="level">Level: <span id="player-level">1</span></div>
+            </div>
+        </div>
+
+        <div class="main-area">
+            <div class="board-container">
+                <h2>Battle Board</h2>
+                <div class="board" id="battle-board">
+                    <!-- 4x8 grid for battle board -->
+                    <!-- First row -->
+                    <div class="cell" data-position="0-0"></div>
+                    <div class="cell" data-position="0-1"></div>
+                    <div class="cell" data-position="0-2"></div>
+                    <div class="cell" data-position="0-3"></div>
+                    <div class="cell" data-position="0-4"></div>
+                    <div class="cell" data-position="0-5"></div>
+                    <div class="cell" data-position="0-6"></div>
+                    <div class="cell" data-position="0-7"></div>
+                    <!-- Second row -->
+                    <div class="cell" data-position="1-0"></div>
+                    <div class="cell" data-position="1-1"></div>
+                    <div class="cell" data-position="1-2"></div>
+                    <div class="cell" data-position="1-3"></div>
+                    <div class="cell" data-position="1-4"></div>
+                    <div class="cell" data-position="1-5"></div>
+                    <div class="cell" data-position="1-6"></div>
+                    <div class="cell" data-position="1-7"></div>
+                    <!-- Third row -->
+                    <div class="cell" data-position="2-0"></div>
+                    <div class="cell" data-position="2-1"></div>
+                    <div class="cell" data-position="2-2"></div>
+                    <div class="cell" data-position="2-3"></div>
+                    <div class="cell" data-position="2-4"></div>
+                    <div class="cell" data-position="2-5"></div>
+                    <div class="cell" data-position="2-6"></div>
+                    <div class="cell" data-position="2-7"></div>
+                    <!-- Fourth row -->
+                    <div class="cell" data-position="3-0"></div>
+                    <div class="cell" data-position="3-1"></div>
+                    <div class="cell" data-position="3-2"></div>
+                    <div class="cell" data-position="3-3"></div>
+                    <div class="cell" data-position="3-4"></div>
+                    <div class="cell" data-position="3-5"></div>
+                    <div class="cell" data-position="3-6"></div>
+                    <div class="cell" data-position="3-7"></div>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="controls">
+                    <button id="refresh-shop">Refresh Shop (2 Gold)</button>
+                    <button id="buy-exp">Buy EXP (4 Gold)</button>
+                    <button id="start-battle">Start Battle</button>
+                </div>
+
+                <div class="pokemon-info" id="pokemon-info">
+                    <h3>Pokémon Info</h3>
+                    <div class="info-content">
+                        <p>Select a Pokémon to see its stats</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-area">
+            <div class="bench-container">
+                <h2>Bench</h2>
+                <div class="bench" id="player-bench">
+                    <div class="bench-slot" data-slot="0"></div>
+                    <div class="bench-slot" data-slot="1"></div>
+                    <div class="bench-slot" data-slot="2"></div>
+                    <div class="bench-slot" data-slot="3"></div>
+                    <div class="bench-slot" data-slot="4"></div>
+                    <div class="bench-slot" data-slot="5"></div>
+                    <div class="bench-slot" data-slot="6"></div>
+                    <div class="bench-slot" data-slot="7"></div>
+                    <div class="bench-slot" data-slot="8"></div>
+                </div>
+            </div>
+
+            <div class="shop-container">
+                <h2>Shop</h2>
+                <div class="shop" id="pokemon-shop">
+                    <div class="shop-slot" data-shop="0"></div>
+                    <div class="shop-slot" data-shop="1"></div>
+                    <div class="shop-slot" data-shop="2"></div>
+                    <div class="shop-slot" data-shop="3"></div>
+                    <div class="shop-slot" data-shop="4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="evolution-animation" class="evolution-animation">
+        <div class="evolution-content">
+            <h2>Evolution!</h2>
+            <div class="evolution-images">
+                <img id="pre-evolution" src="" alt="Pre-evolution">
+                <div class="arrow">→</div>
+                <img id="post-evolution" src="" alt="Post-evolution">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
