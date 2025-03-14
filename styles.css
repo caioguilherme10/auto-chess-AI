@@ -125,6 +125,8 @@ button:disabled {
     padding: 15px;
     border-radius: 5px;
     min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .bottom-area {
