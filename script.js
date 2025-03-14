@@ -3,7 +3,7 @@ const pokemonData = {
     // Base Pokemon (Level 1)
     'Bulbasaur': {
         name: 'Bulbasaur',
-        type: 'grass',
+        type: ['grass', 'poison'],
         level: 1,
         evolution: 'Ivysaur',
         cost: 1,
@@ -15,7 +15,25 @@ const pokemonData = {
         image: {
             front: 'image/Bulbasaur_Front.png',
             back: 'image/Bulbasaur_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Tackle',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 50,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Vine Whip',
+                type: 'grass',
+                damage_category: 'Physical',
+                power: 35,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Charmander': {
         name: 'Charmander',
@@ -746,7 +764,7 @@ const gameState = {
     level: 1,
     maxBoardUnits: 3, // Initial max units on board based on level
     bench: Array(9).fill(null),
-    board: Array(4).fill().map(() => Array(8).fill(null)),
+    board: Array(6).fill().map(() => Array(8).fill(null)),
     shop: Array(5).fill(null),
     selectedPokemon: null,
     draggedPokemon: null,
@@ -844,7 +862,18 @@ function createPokemonElement(pokemon) {
     
     // Add type indicator
     const typeIndicator = document.createElement('div');
-    typeIndicator.className = `type-indicator type-${pokemon.type}`;
+    if (Array.isArray(pokemon.type)) {
+        // Handle dual typing
+        typeIndicator.className = `type-indicator type-${pokemon.type[0]}`;
+        
+        // Add secondary type indicator if it exists
+        const secondaryTypeIndicator = document.createElement('div');
+        secondaryTypeIndicator.className = `type-indicator type-${pokemon.type[1]}`;
+        element.appendChild(secondaryTypeIndicator);
+    } else {
+        // Handle single typing
+        typeIndicator.className = `type-indicator type-${pokemon.type}`;
+    }
     element.appendChild(typeIndicator);
     
     // Add Pokemon image
@@ -997,6 +1026,61 @@ function setupDragAndDrop() {
         });
     });
     
+    // Trash bin drag events
+    const trashBin = document.getElementById('trash-bin');
+    if (trashBin) {
+        trashBin.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            trashBin.classList.add('drag-over');
+        });
+        
+        trashBin.addEventListener('dragleave', () => {
+            trashBin.classList.remove('drag-over');
+        });
+        
+        trashBin.addEventListener('drop', (e) => {
+            e.preventDefault();
+            trashBin.classList.remove('drag-over');
+            
+            if (!gameState.draggedPokemon) return;
+            
+            // Only allow selling from bench
+            if (gameState.dragSource.type === 'bench') {
+                const sourceIndex = gameState.dragSource.index;
+                const pokemon = gameState.bench[sourceIndex];
+                
+                // Calculate sell value based on Pokemon level and cost
+                let sellValue = 0;
+                if (pokemon.cost) {
+                    sellValue = pokemon.cost;
+                    if (pokemon.level > 1) {
+                        sellValue = pokemon.cost * Math.pow(3, pokemon.level - 1);
+                    }
+                } else {
+                    // Default value if cost is not defined
+                    sellValue = pokemon.level;
+                }
+                
+                // Add gold to player
+                gameState.gold += sellValue;
+                
+                // Remove Pokemon from bench
+                gameState.bench[sourceIndex] = null;
+                
+                // Show sell animation/feedback
+                showSellFeedback(sellValue);
+                
+                // Update UI
+                renderBench();
+                updateStats();
+            }
+            
+            // Reset drag state
+            gameState.draggedPokemon = null;
+            gameState.dragSource = null;
+        });
+    }
+    
     // Bench drag events
     playerBench.addEventListener('dragstart', (e) => {
         const benchSlot = e.target.closest('.bench-slot');
@@ -1067,6 +1151,17 @@ function setupDragAndDrop() {
         if (cell) {
             const [targetRow, targetCol] = cell.dataset.position.split('-').map(Number);
             
+            // Check if the target cell is in the player area (rows 3, 4, and 5)
+            const isPlayerArea = targetRow >= 3 && targetRow <= 5;
+            
+            // Only allow placement in player area
+            if (!isPlayerArea) {
+                // Reset drag state and return if not in player area
+                gameState.draggedPokemon = null;
+                gameState.dragSource = null;
+                return;
+            }
+            
             // Count current units on board
             const currentUnitsOnBoard = gameState.board.flat().filter(unit => unit !== null).length;
             
@@ -1093,10 +1188,13 @@ function setupDragAndDrop() {
             else if (gameState.dragSource.type === 'board') {
                 const [sourceRow, sourceCol] = gameState.dragSource.position;
                 
-                // Swap positions on board
-                const targetPokemon = gameState.board[targetRow][targetCol];
-                gameState.board[targetRow][targetCol] = gameState.draggedPokemon;
-                gameState.board[sourceRow][sourceCol] = targetPokemon;
+                // Only allow movement within player area
+                if (sourceRow >= 3 && sourceRow <= 5) {
+                    // Swap positions on board
+                    const targetPokemon = gameState.board[targetRow][targetCol];
+                    gameState.board[targetRow][targetCol] = gameState.draggedPokemon;
+                    gameState.board[sourceRow][sourceCol] = targetPokemon;
+                }
             }
             
             renderBench();
@@ -1163,15 +1261,43 @@ function deselectPokemon() {
 
 // Display Pokemon information
 function displayPokemonInfo(pokemon) {
-    pokemonInfo.innerHTML = `
+    // Format type display for single or dual typing
+    let typeDisplay = '';
+    if (Array.isArray(pokemon.type)) {
+        typeDisplay = pokemon.type.join('/');
+    } else {
+        typeDisplay = pokemon.type;
+    }
+    
+    // Start with basic Pokemon info
+    let infoHTML = `
         <h3>${pokemon.name}</h3>
-        <p>Type: ${pokemon.type}</p>
+        <p>Type: ${typeDisplay}</p>
         <p>Level: ${pokemon.level}</p>
         <p>Attack: ${pokemon.stats.attack}</p>
         <p>Health: ${pokemon.stats.health}</p>
         <p>Range: ${pokemon.stats.range}</p>
         ${pokemon.evolution ? `<p>Evolves to: ${pokemon.evolution}</p>` : ''}
     `;
+    
+    // Add moves section if the Pokemon has moves
+    if (pokemon.moves && pokemon.moves.length > 0) {
+        infoHTML += `<h4>Moves:</h4><ul>`;
+        
+        pokemon.moves.forEach(move => {
+            infoHTML += `
+                <li>
+                    <strong>${move.name}</strong> - ${move.type} type<br>
+                    Category: ${move.damage_category}<br>
+                    Power: ${move.power} | Accuracy: ${move.accuracy}%
+                </li>
+            `;
+        });
+        
+        infoHTML += `</ul>`;
+    }
+    
+    pokemonInfo.innerHTML = infoHTML;
 }
 
 // Check for possible evolutions
@@ -1270,14 +1396,19 @@ function generateEnemyBoard() {
         return pokemonData[name].level <= Math.ceil(gameState.level / 3);
     });
     
-    // Generate random enemy units
+    // Generate random enemy units and distribute them in the enemy area (rows 0-2)
     for (let i = 0; i < enemyUnitCount; i++) {
         const randomPokemon = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
+        
+        // Distribute enemies across the enemy area (rows 0-2)
+        const row = Math.floor(i / 3);
+        const col = i % 8;
+        
         const enemyUnit = { 
             ...pokemonData[randomPokemon],
             id: generateUniqueId(),
             currentHealth: pokemonData[randomPokemon].stats.health,
-            position: { row: 0, col: i },
+            position: { row: row, col: col },
             isEnemy: true
         };
         
@@ -1511,6 +1642,31 @@ function showBattleResult(message) {
     }, 3000);
 }
 
+// Show sell feedback
+function showSellFeedback(amount) {
+    const feedbackElement = document.createElement('div');
+    feedbackElement.className = 'sell-feedback';
+    feedbackElement.textContent = `+${amount} Gold`;
+    
+    // Position near trash bin
+    const trashBin = document.getElementById('trash-bin');
+    if (trashBin) {
+        const rect = trashBin.getBoundingClientRect();
+        feedbackElement.style.left = `${rect.left + rect.width/2}px`;
+        feedbackElement.style.top = `${rect.top - 20}px`;
+    }
+    
+    document.body.appendChild(feedbackElement);
+    
+    // Animate and remove
+    setTimeout(() => {
+        feedbackElement.classList.add('fade-out');
+        setTimeout(() => {
+            feedbackElement.remove();
+        }, 500);
+    }, 1000);
+}
+
 // Game over
 function gameOver() {
     // Show game over message
@@ -1544,7 +1700,7 @@ function resetGame() {
     gameState.level = 1;
     gameState.maxBoardUnits = 3;
     gameState.bench = Array(9).fill(null);
-    gameState.board = Array(4).fill().map(() => Array(8).fill(null));
+    gameState.board = Array(6).fill().map(() => Array(8).fill(null));
     gameState.shop = Array(5).fill(null);
     gameState.selectedPokemon = null;
     gameState.draggedPokemon = null;
