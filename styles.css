@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -232,18 +232,39 @@ button:disabled {
     width: 80px;
     height: 100px;
     background-color: #e74c3c;
-    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #e74c3c, #c0392b);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .trash-bin:hover {
     background-color: #c0392b;
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+}
+
+.trash-bin::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.trash-bin:hover::before {
+    opacity: 1;
 }
 
 .trash-bin-label {
@@ -262,16 +283,55 @@ button:disabled {
     width: 80px;
     height: 80px;
     background-color: #95a5a6;
-    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #95a5a6, #7f8c8d);
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.bench-slot::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .bench-slot:hover {
     background-color: #7f8c8d;
+    background-image: linear-gradient(to bottom, #7f8c8d, #6d7b7c);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bench-slot:hover::before {
+    opacity: 1;
+}
+
+.bench-slot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.bench-slot:hover::after {
+    transform: translateX(100%);
 }
 
 .shop {
@@ -308,12 +368,30 @@ button:disabled {
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pokemon:hover {
+    transform: scale(1.05);
 }
 
 .pokemon img {
     max-width: 100%;
     max-height: 70%;
     object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.pokemon:hover img {
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    transform: translateY(-3px);
 }
 
 .pokemon-name {
@@ -321,28 +399,55 @@ button:disabled {
     text-align: center;
     color: white;
     margin-top: 5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.pokemon:hover .pokemon-name {
+    transform: scale(1.1);
 }
 
 .pokemon-level {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     background-color: gold;
-    color: black;
-    font-size: 10px;
-    padding: 2px 4px;
-    border-radius: 3px;
+    background-image: linear-gradient(to bottom, gold, #e6c200);
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.pokemon:hover .pokemon-level {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .pokemon-cost {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5px;
+    right: 5px;
     background-color: gold;
-    color: black;
+    background-image: linear-gradient(to bottom, gold, #e6c200);
+    color: #333;
     font-size: 12px;
-    padding: 2px 4px;
-    border-radius: 3px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.pokemon:hover .pokemon-cost {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .pokemon-stats {
@@ -363,68 +468,206 @@ button:disabled {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     display: none;
+    backdrop-filter: blur(5px);
 }
 
 .evolution-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
     text-align: center;
+    box-shadow: 0 0 50px rgba(52, 152, 219, 0.8), 0 0 100px rgba(52, 152, 219, 0.4);
+    animation: pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.evolution-content h2 {
+    color: #3498db;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.evolution-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.1), transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+    to { text-shadow: 0 0 20px rgba(52, 152, 219, 0.8), 0 0 30px rgba(52, 152, 219, 0.6); }
 }
 
 .evolution-images {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    margin-top: 20px;
+    gap: 50px;
+    margin-top: 30px;
+    position: relative;
 }
 
 .evolution-images img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+}
+
+#pre-evolution {
+    animation: float-left 3s ease-in-out infinite;
+}
+
+#post-evolution {
+    animation: float-right 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+}
+
+@keyframes float-left {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes float-right {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-10px) rotate(-3deg); }
 }
 
 .arrow {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     color: #3498db;
+    position: relative;
+    animation: arrow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
 }
 
 /* Health bar styles */
 .health-bar {
     width: 100%;
-    height: 5px;
-    background-color: #e74c3c;
+    height: 6px;
+    background-color: rgba(231, 76, 60, 0.7);
     position: absolute;
     bottom: 0;
     left: 0;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .health-bar-fill {
     height: 100%;
     background-color: #2ecc71;
+    background-image: linear-gradient(to right, #2ecc71, #27ae60);
     width: 100%;
-    transition: width 0.3s ease;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+}
+
+.health-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    animation: health-shine 2s infinite linear;
+}
+
+@keyframes health-shine {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
 }
 
 /* Battle animation */
 .attack-animation {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: yellow;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(255,255,0,1) 0%, rgba(255,255,0,0) 70%);
     border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0.9;
     z-index: 10;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.5);
+    animation: pulse-attack 0.5s ease-out;
+}
+
+@keyframes pulse-attack {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+/* Different attack types */
+.attack-fire {
+    background: radial-gradient(circle, rgba(255,100,0,1) 0%, rgba(255,100,0,0) 70%);
+    box-shadow: 0 0 20px 10px rgba(255, 100, 0, 0.5);
+}
+
+.attack-water {
+    background: radial-gradient(circle, rgba(0,150,255,1) 0%, rgba(0,150,255,0) 70%);
+    box-shadow: 0 0 20px 10px rgba(0, 150, 255, 0.5);
+}
+
+.attack-grass {
+    background: radial-gradient(circle, rgba(0,200,0,1) 0%, rgba(0,200,0,0) 70%);
+    box-shadow: 0 0 20px 10px rgba(0, 200, 0, 0.5);
+}
+
+.attack-electric {
+    background: radial-gradient(circle, rgba(255,255,0,1) 0%, rgba(255,255,0,0) 70%);
+    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.5);
+}
+
+/* Critical hit animation */
+.critical-hit {
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    text-shadow: 0 0 5px white;
+    z-index: 11;
+    animation: critical-anim 1s ease-out forwards;
+}
+
+@keyframes critical-anim {
+    0% { transform: scale(0.5); opacity: 0; }
+    20% { transform: scale(1.5); opacity: 1; }
+    100% { transform: translateY(-30px) scale(1); opacity: 0; }
 }
 
 /* Type indicators */

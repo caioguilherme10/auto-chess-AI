@@ -841,14 +841,45 @@ const pokemonData = {
         level: 2,
         evolution: 'Blastoise',
         stats: {
-            attack: 24,
-            health: 240,
+            health: 166,
+            physicalAttack: 115,
+            physicalDefense: 132,
+            specialAttack: 117,
+            specialDefense: 132,
+            speed: 110,
+            attack: 24, // Keeping original stat for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'bug', 'ground', 'rock', 'poison', 'psychic', 'fairy', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
+            weak: ['grass', 'electric'],
+            superWeak: [],
+            resistant: ['steel', 'fire', 'ice', 'water'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Wartortle_Front.png',
             back: 'image/Wartortle_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Bite',
+                type: 'dark',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Water Pulse',
+                type: 'water',
+                damage_category: 'Special',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Metapod': {
         name: 'Metapod',
@@ -856,44 +887,121 @@ const pokemonData = {
         level: 2,
         evolution: 'Butterfree',
         stats: {
-            attack: 20,
-            health: 180,
+            health: 157,
+            physicalAttack: 72,
+            physicalDefense: 107,
+            specialAttack: 77,
+            specialDefense: 77,
+            speed: 82,
+            attack: 20, // Keeping original stat for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'steel', 'ice', 'water', 'bug', 'poison', 'psychic', 'fairy', 'electric', 'ghost', 'dragon', 'dark'],
+            weak: ['fire', 'rock', 'flying'],
+            superWeak: [],
+            resistant: ['grass', 'ground', 'fighting'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Metapod_Front.png',
             back: 'image/Metapod_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Tackle',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 50,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            }
+        ]
     },
     'Kakuna': {
         name: 'Kakuna',
-        type: 'bug',
+        type: ['bug', 'poison'],
         level: 2,
         evolution: 'Beedrill',
         stats: {
-            attack: 24,
-            health: 170,
+            health: 152,
+            physicalAttack: 77,
+            physicalDefense: 102,
+            specialAttack: 77,
+            specialDefense: 77,
+            speed: 87,
+            attack: 24, // Keeping original stat for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ground', 'steel', 'ice', 'water', 'electric', 'ghost', 'dragon', 'dark'],
+            weak: ['fire', 'rock', 'flying', 'psychic'],
+            superWeak: [],
+            resistant: ['poison', 'bug', 'fairy'],
+            superResistant: ['fighting', 'grass'],
+            immune: []
         },
         image: {
             front: 'image/Kakuna_Front.png',
             back: 'image/Kakuna_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Poison Sting',
+                type: 'poison',
+                damage_category: 'Physical',
+                power: 15,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            }
+        ]
     },
     'Pidgeotto': {
         name: 'Pidgeotto',
-        type: 'flying',
+        type: ['normal', 'flying'],
         level: 2,
         evolution: 'Pidgeot',
         stats: {
-            attack: 28,
-            health: 190,
+            health: 170,
+            physicalAttack: 112,
+            physicalDefense: 107,
+            specialAttack: 102,
+            specialDefense: 102,
+            speed: 123,
+            attack: 28, // Keeping original stat for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'flying', 'fighting', 'poison', 'steel', 'psychic', 'water', 'dragon', 'dark', 'fairy'],
+            weak: ['rock', 'electric', 'ice'],
+            superWeak: [],
+            resistant: ['bug', 'grass'],
+            superResistant: [],
+            immune: ['ground', 'ghost']
         },
         image: {
             front: 'image/Pidgeotto_Front.png',
             back: 'image/Pidgeotto_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Wing Attack',
+                type: 'flying',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Twister',
+                type: 'dragon',
+                damage_category: 'Special',
+                power: 40,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     // New Pokemon - Level 2 Evolutions
     'Dragonair': {
@@ -902,59 +1010,183 @@ const pokemonData = {
         level: 2,
         evolution: 'Dragonite',
         stats: {
-            attack: 36,
-            health: 180,
+            health: 168,
+            physicalAttack: 136,
+            physicalDefense: 117,
+            specialAttack: 122,
+            specialDefense: 122,
+            speed: 122,
+            attack: 36, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['flying', 'normal', 'fighting', 'ground', 'bug', 'poison', 'dark', 'psychic', 'ghost', 'steel', 'rock'],
+            weak: ['dragon', 'fairy', 'ice'],
+            superWeak: [],
+            resistant: ['fire', 'electric', 'water', 'grass'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Dragonair_Front.png',
             back: 'image/Dragonair_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Dragon Tail',
+                type: 'dragon',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 90,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Aqua Tail',
+                type: 'water',
+                damage_category: 'Physical',
+                power: 90,
+                accuracy: 90,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Haunter': {
         name: 'Haunter',
-        type: 'ghost',
+        type: ['ghost', 'poison'],
         level: 2,
         evolution: 'Gengar',
         stats: {
-            attack: 44,
-            health: 140,
+            health: 152,
+            physicalAttack: 102,
+            physicalDefense: 97,
+            specialAttack: 167,
+            specialDefense: 107,
+            speed: 147,
+            attack: 44, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: [ 'fire', 'flying', 'steel', 'water', 'dragon', 'rock', 'electric', 'ice'],
+            weak: ['dark', 'psychic', 'ghost'],
+            superWeak: [],
+            resistant: ['fairy', 'grass'],
+            superResistant: ['bug', 'poison'],
+            immune: ['normal', 'fighting', 'ground']
         },
         image: {
             front: 'image/Haunter_Front.png',
             back: 'image/Haunter_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Sucker Punch',
+                type: 'dark',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Shadow Ball',
+                type: 'ghost',
+                damage_category: 'Special',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Graveler': {
         name: 'Graveler',
-        type: 'rock',
+        type: ['rock', 'ground'],
         level: 2,
         evolution: 'Golem',
         stats: {
-            attack: 32,
-            health: 260,
+            health: 162,
+            physicalAttack: 147,
+            physicalDefense: 167,
+            specialAttack: 97,
+            specialDefense: 97,
+            speed: 87,
+            attack: 32, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['fairy', 'bug', 'ghost', 'psychic', 'dragon', 'dark'],
+            weak: ['ground', 'fighting', 'steel', 'ice'],
+            superWeak: ['grass', 'water'],
+            resistant: ['normal', 'flying', 'fire', 'rock'],
+            superResistant: ['poison'],
+            immune: ['electric']
         },
         image: {
             front: 'image/Graveler_Front.png',
             back: 'image/Graveler_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Smack Down',
+                type: 'rock',
+                damage_category: 'Physical',
+                power: 50,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Bulldoze',
+                type: 'ground',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Weepinbell': {
         name: 'Weepinbell',
-        type: 'grass',
+        type: ['grass', 'poison'],
         level: 2,
         evolution: 'Victreebel',
         stats: {
-            attack: 34,
-            health: 170,
+            health: 172,
+            physicalAttack: 142,
+            physicalDefense: 102,
+            specialAttack: 137,
+            specialDefense: 97,
+            speed: 107,
+            attack: 34, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
+            weak: ['flying', 'fire', 'psychic', 'ice'],
+            superWeak: [],
+            resistant: ['fighting', 'water', 'electric', 'fairy'],
+            superResistant: ['grass'],
+            immune: []
         },
         image: {
             front: 'image/Weepinbell_Front.png',
             back: 'image/Weepinbell_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Acid',
+                type: 'poison',
+                damage_category: 'Special',
+                power: 40,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Knock Off',
+                type: 'dark',
+                damage_category: 'Physical',
+                power: 20,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Machoke': {
         name: 'Machoke',
@@ -962,14 +1194,45 @@ const pokemonData = {
         level: 2,
         evolution: 'Machamp',
         stats: {
-            attack: 42,
-            health: 220,
+            health: 187,
+            physicalAttack: 152,
+            physicalDefense: 122,
+            specialAttack: 102,
+            specialDefense: 112,
+            speed: 97,
+            attack: 42, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ghost', 'water', 'fighting', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'poison', 'dragon'],
+            weak: ['psychic', 'fairy', 'flying'],
+            superWeak: [],
+            resistant: ['rock', 'bug', 'dark'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Machoke_Front.png',
             back: 'image/Machoke_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Revenge',
+                type: 'fighting',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Submission',
+                type: 'fighting',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 80,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Kadabra': {
         name: 'Kadabra',
@@ -977,14 +1240,45 @@ const pokemonData = {
         level: 2,
         evolution: 'Alakazam',
         stats: {
-            attack: 50,
-            health: 130,
+            health: 147,
+            physicalAttack: 87,
+            physicalDefense: 82,
+            specialAttack: 172,
+            specialDefense: 122,
+            speed: 157,
+            attack: 50, // Keeping original attack for backward compatibility
             range: 3
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fairy', 'flying', 'water', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'rock', 'poison', 'dragon'],
+            weak: ['bug', 'ghost', 'dark'],
+            superWeak: [],
+            resistant: ['psychic', 'fighting'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Kadabra_Front.png',
             back: 'image/Kadabra_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Confusion',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 50,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Psybeam',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 65,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Poliwhirl': {
         name: 'Poliwhirl',
@@ -992,29 +1286,91 @@ const pokemonData = {
         level: 2,
         evolution: 'Poliwrath',
         stats: {
-            attack: 28,
-            health: 210,
+            health: 172,
+            physicalAttack: 117,
+            physicalDefense: 117,
+            specialAttack: 102,
+            specialDefense: 102,
+            speed: 142,
+            attack: 28, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fairy', 'flying', 'psychic', 'fighting', 'ground', 'rock', 'bug', 'ghost', 'poison', 'dragon', 'dark'],
+            weak: ['electric', 'grass'],
+            superWeak: [],
+            resistant: ['water', 'ice', 'steel', 'fire'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Poliwhirl_Front.png',
             back: 'image/Poliwhirl_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Body Slam',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 85,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'BubbleBeam',
+                type: 'water',
+                damage_category: 'Special',
+                power: 65,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Gloom': {
         name: 'Gloom',
-        type: 'grass',
+        type: ['grass', 'poison'],
         level: 2,
         evolution: 'Vileplume',
         stats: {
-            attack: 32,
-            health: 190,
+            health: 167,
+            physicalAttack: 117,
+            physicalDefense: 122,
+            specialAttack: 137,
+            specialDefense: 127,
+            speed: 92,
+            attack: 32, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
+            weak: ['fire', 'flying', 'ice', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'water', 'electric', 'grass', 'fairy'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Gloom_Front.png',
             back: 'image/Gloom_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Mega Drain',
+                type: 'grass',
+                damage_category: 'Special',
+                power: 40,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Venoshock',
+                type: 'poison',
+                damage_category: 'Special',
+                power: 65,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Nidorino': {
         name: 'Nidorino',
@@ -1022,14 +1378,45 @@ const pokemonData = {
         level: 2,
         evolution: 'Nidoking',
         stats: {
-            attack: 38,
-            health: 200,
+            health: 168,
+            physicalAttack: 124,
+            physicalDefense: 109,
+            specialAttack: 107,
+            specialDefense: 107,
+            speed: 117,
+            attack: 38, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
+            weak: ['ground', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Nidorino_Front.png',
             back: 'image/Nidorino_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Horn Attack',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 65,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Cut',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 50,
+                accuracy: 95,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Nidorina': {
         name: 'Nidorina',
@@ -1037,14 +1424,45 @@ const pokemonData = {
         level: 2,
         evolution: 'Nidoqueen',
         stats: {
-            attack: 34,
-            health: 220,
+            health: 177,
+            physicalAttack: 114,
+            physicalDefense: 119,
+            specialAttack: 107,
+            specialDefense: 107,
+            speed: 108,
+            attack: 34, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
+            weak: ['ground', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Nidorina_Front.png',
             back: 'image/Nidorina_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Bite',
+                type: 'dark',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Cut',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 50,
+                accuracy: 95,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     
     // Level 3 Evolutions
@@ -1065,6 +1483,7 @@ const pokemonData = {
         typeEffectiveness: {
             normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
             weak: ['flying', 'fire', 'psychic', 'ice'],
+            superWeak: [],
             resistant: ['fighting', 'water', 'electric', 'fairy'],
             superResistant: ['grass'],
             immune: []
@@ -1165,17 +1584,48 @@ const pokemonData = {
     // New Pokemon - Level 3 Evolutions
     'Dragonite': {
         name: 'Dragonite',
-        type: 'dragon',
+        type: ['dragon', 'flying'],
         level: 3,
         stats: {
-            attack: 72,
-            health: 360,
+            health: 292,
+            physicalAttack: 276.5,
+            physicalDefense: 218,
+            specialAttack: 225.5,
+            specialDefense: 225.5,
+            speed: 195.5,
+            attack: 72, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['flying', 'electric', 'normal', 'ground', 'poison', 'dark', 'psychic', 'ghost', 'steel'],
+            weak: ['dragon', 'fairy', 'rock'],
+            superWeak: ['ice'],
+            resistant: ['fire', 'fighting', 'bug', 'water'],
+            superResistant: ['grass'],
+            immune: []
         },
         image: {
             front: 'image/Dragonite_Front.png',
             back: 'image/Dragonite_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Wing Attack',
+                type: 'flying',
+                damage_category: 'Physical',
+                power: 60,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Outrage',
+                type: 'dragon',
+                damage_category: 'Physical',
+                power: 120,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Gengar': {
         name: 'Gengar',
