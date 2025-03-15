@@ -147,22 +147,70 @@ function displayPokemonInfo(pokemon) {
         <div class="info-content">
             <p>Type: ${typeDisplay}</p>
             <p>Level: ${pokemon.level}</p>
-            <p>Attack: ${pokemon.stats.attack}</p>
-            <p>Health: ${pokemon.stats.health}</p>
-            <p>Range: ${pokemon.stats.range}</p>
+            
+            <h4>Stats:</h4>
+            <div class="stats-grid">
+                <div class="stat">HP: ${pokemon.stats.health}</div>
+                <div class="stat">Attack: ${pokemon.stats.attack}</div>
+                <div class="stat">Range: ${pokemon.stats.range}</div>
+                ${pokemon.stats.physicalAttack ? `<div class="stat">Physical Atk: ${pokemon.stats.physicalAttack}</div>` : ''}
+                ${pokemon.stats.physicalDefense ? `<div class="stat">Physical Def: ${pokemon.stats.physicalDefense}</div>` : ''}
+                ${pokemon.stats.specialAttack ? `<div class="stat">Special Atk: ${pokemon.stats.specialAttack}</div>` : ''}
+                ${pokemon.stats.specialDefense ? `<div class="stat">Special Def: ${pokemon.stats.specialDefense}</div>` : ''}
+                ${pokemon.stats.speed ? `<div class="stat">Speed: ${pokemon.stats.speed}</div>` : ''}
+            </div>
+            
             ${pokemon.evolution ? `<p>Evolves to: ${pokemon.evolution}</p>` : ''}
     `;
     
+    // Add type effectiveness section if available
+    if (pokemon.typeEffectiveness) {
+        infoHTML += `<h4>Type Effectiveness:</h4><div class="type-effectiveness">`;
+        
+        // Add weaknesses
+        if (pokemon.typeEffectiveness.weak && pokemon.typeEffectiveness.weak.length > 0) {
+            infoHTML += `<p><strong>Weak to:</strong> ${pokemon.typeEffectiveness.weak.join(', ')}</p>`;
+        }
+        
+        // Add super weaknesses
+        if (pokemon.typeEffectiveness.superWeak && pokemon.typeEffectiveness.superWeak.length > 0) {
+            infoHTML += `<p><strong>Super weak to:</strong> ${pokemon.typeEffectiveness.superWeak.join(', ')}</p>`;
+        }
+        
+        // Add resistances
+        if (pokemon.typeEffectiveness.resistant && pokemon.typeEffectiveness.resistant.length > 0) {
+            infoHTML += `<p><strong>Resistant to:</strong> ${pokemon.typeEffectiveness.resistant.join(', ')}</p>`;
+        }
+        
+        // Add super resistances
+        if (pokemon.typeEffectiveness.superResistant && pokemon.typeEffectiveness.superResistant.length > 0) {
+            infoHTML += `<p><strong>Super resistant to:</strong> ${pokemon.typeEffectiveness.superResistant.join(', ')}</p>`;
+        }
+        
+        // Add immunities
+        if (pokemon.typeEffectiveness.immune && pokemon.typeEffectiveness.immune.length > 0) {
+            infoHTML += `<p><strong>Immune to:</strong> ${pokemon.typeEffectiveness.immune.join(', ')}</p>`;
+        }
+        
+        infoHTML += `</div>`;
+    }
+    
     // Add moves section if the Pokemon has moves
     if (pokemon.moves && pokemon.moves.length > 0) {
-        infoHTML += `<h4>Moves:</h4><ul>`;
+        infoHTML += `<h4>Moves:</h4><ul class="moves-list">`;
         
         pokemon.moves.forEach(move => {
             infoHTML += `
-                <li>
-                    <strong>${move.name}</strong> - ${move.type} type<br>
-                    Category: ${move.damage_category}<br>
-                    Power: ${move.power} | Accuracy: ${move.accuracy}%
+                <li class="move-item">
+                    <div class="move-header">
+                        <strong>${move.name}</strong>
+                        <span class="move-type ${move.type}-type">${move.type}</span>
+                    </div>
+                    <div class="move-details">
+                        <span>Category: ${move.damage_category}</span>
+                        <span>Power: ${move.power}</span>
+                        <span>Accuracy: ${move.accuracy}%</span>
+                    </div>
                 </li>
             `;
         });
