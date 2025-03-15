@@ -135,87 +135,170 @@ function deselectPokemon() {
 function displayPokemonInfo(pokemon) {
     // Format type display for single or dual typing
     let typeDisplay = '';
+    let typeClasses = '';
+    
     if (Array.isArray(pokemon.type)) {
-        typeDisplay = pokemon.type.join('/');
+        // Create type pills for each type
+        typeDisplay = `
+            <span class="type-pill ${pokemon.type[0].toLowerCase()}-type">${pokemon.type[0]}</span>
+            <span class="type-pill ${pokemon.type[1].toLowerCase()}-type">${pokemon.type[1]}</span>
+        `;
     } else {
-        typeDisplay = pokemon.type;
+        typeDisplay = `<span class="type-pill ${pokemon.type.toLowerCase()}-type">${pokemon.type}</span>`;
     }
     
-    // Start with basic Pokemon info
+    // Start with basic Pokemon info with improved header
     let infoHTML = `
-        <h3>${pokemon.name}</h3>
+        <div class="pokemon-info-header">
+            <h3>${pokemon.name}</h3>
+            <div class="pokemon-level-indicator">${'★'.repeat(pokemon.level)}</div>
+        </div>
+        
         <div class="info-content">
-            <p>Type: ${typeDisplay}</p>
-            <p>Level: ${pokemon.level}</p>
-            
-            <h4>Stats:</h4>
-            <div class="stats-grid">
-                <div class="stat">HP: ${pokemon.stats.health}</div>
-                <div class="stat">Attack: ${pokemon.stats.attack}</div>
-                <div class="stat">Range: ${pokemon.stats.range}</div>
-                ${pokemon.stats.physicalAttack ? `<div class="stat">Physical Atk: ${pokemon.stats.physicalAttack}</div>` : ''}
-                ${pokemon.stats.physicalDefense ? `<div class="stat">Physical Def: ${pokemon.stats.physicalDefense}</div>` : ''}
-                ${pokemon.stats.specialAttack ? `<div class="stat">Special Atk: ${pokemon.stats.specialAttack}</div>` : ''}
-                ${pokemon.stats.specialDefense ? `<div class="stat">Special Def: ${pokemon.stats.specialDefense}</div>` : ''}
-                ${pokemon.stats.speed ? `<div class="stat">Speed: ${pokemon.stats.speed}</div>` : ''}
+            <div class="info-section">
+                <div class="pokemon-types">
+                    ${typeDisplay}
+                </div>
+                ${pokemon.evolution ? `
+                <div class="evolution-info">
+                    <span class="evolution-label">Evolves to:</span>
+                    <span class="evolution-name">${pokemon.evolution}</span>
+                </div>` : ''}
             </div>
             
-            ${pokemon.evolution ? `<p>Evolves to: ${pokemon.evolution}</p>` : ''}
+            <div class="info-section">
+                <h4 class="section-title">Stats</h4>
+                <div class="stats-grid">
+                    <div class="stat"><span class="stat-label">HP:</span> <span class="stat-value">${pokemon.stats.health}</span></div>
+                    <div class="stat"><span class="stat-label">Attack:</span> <span class="stat-value">${pokemon.stats.attack}</span></div>
+                    <div class="stat"><span class="stat-label">Range:</span> <span class="stat-value">${pokemon.stats.range}</span></div>
+                    ${pokemon.stats.physicalAttack ? `<div class="stat"><span class="stat-label">Physical Atk:</span> <span class="stat-value">${pokemon.stats.physicalAttack}</span></div>` : ''}
+                    ${pokemon.stats.physicalDefense ? `<div class="stat"><span class="stat-label">Physical Def:</span> <span class="stat-value">${pokemon.stats.physicalDefense}</span></div>` : ''}
+                    ${pokemon.stats.specialAttack ? `<div class="stat"><span class="stat-label">Special Atk:</span> <span class="stat-value">${pokemon.stats.specialAttack}</span></div>` : ''}
+                    ${pokemon.stats.specialDefense ? `<div class="stat"><span class="stat-label">Special Def:</span> <span class="stat-value">${pokemon.stats.specialDefense}</span></div>` : ''}
+                    ${pokemon.stats.speed ? `<div class="stat"><span class="stat-label">Speed:</span> <span class="stat-value">${pokemon.stats.speed}</span></div>` : ''}
+                </div>
+            </div>
     `;
     
     // Add type effectiveness section if available
     if (pokemon.typeEffectiveness) {
-        infoHTML += `<h4>Type Effectiveness:</h4><div class="type-effectiveness">`;
+        infoHTML += `
+            <div class="info-section">
+                <h4 class="section-title">Type Effectiveness</h4>
+                <div class="type-effectiveness">
+        `;
         
-        // Add weaknesses
-        if (pokemon.typeEffectiveness.weak && pokemon.typeEffectiveness.weak.length > 0) {
-            infoHTML += `<p><strong>Weak to:</strong> ${pokemon.typeEffectiveness.weak.join(', ')}</p>`;
-        }
-        
-        // Add super weaknesses
+        // Create type effectiveness pills with color coding
+        // Add super weaknesses (2x damage) with red background
         if (pokemon.typeEffectiveness.superWeak && pokemon.typeEffectiveness.superWeak.length > 0) {
-            infoHTML += `<p><strong>Super weak to:</strong> ${pokemon.typeEffectiveness.superWeak.join(', ')}</p>`;
+            infoHTML += `
+                <div class="effectiveness-group">
+                    <div class="effectiveness-label super-weak">Super Weak (4x):</div>
+                    <div class="effectiveness-types">
+                        ${pokemon.typeEffectiveness.superWeak.map(type => 
+                            `<span class="type-pill ${type.toLowerCase()}-type">${type}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
         }
         
-        // Add resistances
+        // Add weaknesses (1.5x damage) with orange background
+        if (pokemon.typeEffectiveness.weak && pokemon.typeEffectiveness.weak.length > 0) {
+            infoHTML += `
+                <div class="effectiveness-group">
+                    <div class="effectiveness-label weak">Weak (2x):</div>
+                    <div class="effectiveness-types">
+                        ${pokemon.typeEffectiveness.weak.map(type => 
+                            `<span class="type-pill ${type.toLowerCase()}-type">${type}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Add resistances (0.5x damage) with green background
         if (pokemon.typeEffectiveness.resistant && pokemon.typeEffectiveness.resistant.length > 0) {
-            infoHTML += `<p><strong>Resistant to:</strong> ${pokemon.typeEffectiveness.resistant.join(', ')}</p>`;
+            infoHTML += `
+                <div class="effectiveness-group">
+                    <div class="effectiveness-label resistant">Resistant (0.5x):</div>
+                    <div class="effectiveness-types">
+                        ${pokemon.typeEffectiveness.resistant.map(type => 
+                            `<span class="type-pill ${type.toLowerCase()}-type">${type}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
         }
         
-        // Add super resistances
+        // Add super resistances (0.25x damage) with blue background
         if (pokemon.typeEffectiveness.superResistant && pokemon.typeEffectiveness.superResistant.length > 0) {
-            infoHTML += `<p><strong>Super resistant to:</strong> ${pokemon.typeEffectiveness.superResistant.join(', ')}</p>`;
+            infoHTML += `
+                <div class="effectiveness-group">
+                    <div class="effectiveness-label super-resistant">Super Resistant (0.25x):</div>
+                    <div class="effectiveness-types">
+                        ${pokemon.typeEffectiveness.superResistant.map(type => 
+                            `<span class="type-pill ${type.toLowerCase()}-type">${type}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
         }
         
-        // Add immunities
+        // Add immunities (0x damage) with purple background
         if (pokemon.typeEffectiveness.immune && pokemon.typeEffectiveness.immune.length > 0) {
-            infoHTML += `<p><strong>Immune to:</strong> ${pokemon.typeEffectiveness.immune.join(', ')}</p>`;
+            infoHTML += `
+                <div class="effectiveness-group">
+                    <div class="effectiveness-label immune">Immune (0x):</div>
+                    <div class="effectiveness-types">
+                        ${pokemon.typeEffectiveness.immune.map(type => 
+                            `<span class="type-pill ${type.toLowerCase()}-type">${type}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
         }
         
-        infoHTML += `</div>`;
+        infoHTML += `
+                </div>
+            </div>
+        `;
     }
     
     // Add moves section if the Pokemon has moves
     if (pokemon.moves && pokemon.moves.length > 0) {
-        infoHTML += `<h4>Moves:</h4><ul class="moves-list">`;
+        infoHTML += `
+            <div class="info-section">
+                <h4 class="section-title">Moves</h4>
+                <ul class="moves-list">
+        `;
         
         pokemon.moves.forEach(move => {
+            // Create a category badge based on damage category
+            const categoryClass = move.damage_category.toLowerCase().replace(' ', '-');
+            
             infoHTML += `
                 <li class="move-item">
                     <div class="move-header">
-                        <strong>${move.name}</strong>
-                        <span class="move-type ${move.type}-type">${move.type}</span>
+                        <div class="move-name-container">
+                            <strong class="move-name">${move.name}</strong>
+                            <span class="move-category ${categoryClass}-category">${move.damage_category}</span>
+                        </div>
+                        <span class="move-type ${move.type.toLowerCase()}-type">${move.type}</span>
                     </div>
                     <div class="move-details">
-                        <span>Category: ${move.damage_category}</span>
-                        <span>Power: ${move.power}</span>
-                        <span>Accuracy: ${move.accuracy}%</span>
+                        <div class="move-stat"><span class="move-stat-label">Power:</span> <span class="move-stat-value">${move.power || 'N/A'}</span></div>
+                        <div class="move-stat"><span class="move-stat-label">Accuracy:</span> <span class="move-stat-value">${move.accuracy ? move.accuracy + '%' : 'N/A'}</span></div>
                     </div>
                 </li>
             `;
         });
         
-        infoHTML += `</ul>`;
+        infoHTML += `
+                </ul>
+            </div>
+        `;
     }
     
     infoHTML += `</div>`; // Close the info-content div

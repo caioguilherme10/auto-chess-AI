@@ -301,7 +301,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Twister',
-                type: 'gragon',
+                type: 'dragon',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -618,8 +618,8 @@ const pokemonData = {
             normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
             weak: ['fire', 'flying', 'ice', 'psychic'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'grass', 'fairy'],
-            superResistant: [],
+            resistant: ['fighting', 'water', 'electric', 'fairy'],
+            superResistant: ['grass'],
             immune: []
         },
         image: {
@@ -827,7 +827,7 @@ const pokemonData = {
             },
             {
                 name: 'Flame Burst',
-                type: 'grass',
+                type: 'fire',
                 damage_category: 'Special',
                 power: 70,
                 accuracy: 100,
@@ -1345,8 +1345,8 @@ const pokemonData = {
             normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
             weak: ['fire', 'flying', 'ice', 'psychic'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'grass', 'fairy'],
-            superResistant: [],
+            resistant: ['fighting', 'water', 'electric', 'fairy'],
+            superResistant: ['grass'],
             immune: []
         },
         image: {
@@ -1513,73 +1513,228 @@ const pokemonData = {
     },
     'Charizard': {
         name: 'Charizard',
-        type: 'fire',
+        type: ['fire', 'flying'],
         level: 3,
         stats: {
-            attack: 80,
-            health: 320,
+            health: 272.5,
+            physicalAttack: 201.5,
+            physicalDefense: 192.5,
+            specialAttack: 239,
+            specialDefense: 203,
+            speed: 225.5,
+            attack: 80, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'poison', 'flying', 'psychic', 'ice', 'ground', 'ghost', 'dragon', 'dark'],
+            weak: ['water', 'electric'],
+            superWeak: ['rock'],
+            resistant: ['fire', 'steel', 'fighting', 'fairy'],
+            superResistant: ['grass', 'bug'],
+            immune: []
         },
         image: {
             front: 'image/Charizard_Front.png',
             back: 'image/Charizard_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Flamethrower',
+                type: 'fire',
+                damage_category: 'Special',
+                power: 95,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Heat Wave',
+                type: 'fire',
+                damage_category: 'Special',
+                power: 100,
+                accuracy: 90,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Blastoise': {
         name: 'Blastoise',
         type: 'water',
         level: 3,
         stats: {
-            attack: 48,
-            health: 480,
+            health: 274,
+            physicalAttack: 200,
+            physicalDefense: 225.5,
+            specialAttack: 203,
+            specialDefense: 233,
+            speed: 192.5,
+            attack: 48, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'bug', 'ground', 'rock', 'poison', 'psychic', 'fairy', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
+            weak: ['grass', 'electric'],
+            superWeak: [],
+            resistant: ['steel', 'fire', 'ice', 'water'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Blastoise_Front.png',
             back: 'image/Blastoise_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Aqua Tail',
+                type: 'water',
+                damage_category: 'Physical',
+                power: 90,
+                accuracy: 90,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Hydro Pump',
+                type: 'water',
+                damage_category: 'Special',
+                power: 120,
+                accuracy: 80,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Butterfree': {
         name: 'Butterfree',
-        type: 'bug',
+        type: ['bug', 'flying'],
         level: 3,
         stats: {
-            attack: 40,
-            health: 360,
+            health: 245.5,
+            physicalAttack: 143,
+            physicalDefense: 150.5,
+            specialAttack: 210.5,
+            specialDefense: 195.5,
+            speed: 180.5,
+            attack: 40, // Keeping original attack for backward compatibility
             range: 3
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'steel', 'water', 'poison', 'psychic', 'fairy', 'ghost', 'dragon', 'dark'],
+            weak: ['fire', 'flying', 'ice', 'electric'],
+            superWeak: ['rock'],
+            resistant: ['bug'],
+            superResistant: ['grass', 'fighting'],
+            immune: ['ground']
         },
         image: {
             front: 'image/Butterfree_Front.png',
             back: 'image/Butterfree_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Psybeam',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 65,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Bug Buzz',
+                type: 'bug',
+                damage_category: 'Special',
+                power: 90,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Beedrill': {
         name: 'Beedrill',
-        type: 'bug',
+        type: ['bug', 'poison'],
         level: 3,
         stats: {
-            attack: 48,
-            health: 340,
+            health: 253,
+            physicalAttack: 210.5,
+            physicalDefense: 135.5,
+            specialAttack: 143,
+            specialDefense: 195.5,
+            speed: 188,
+            attack: 48, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ground', 'steel', 'ice', 'water', 'electric', 'ghost', 'dragon', 'dark'],
+            weak: ['fire', 'rock', 'flying', 'psychic'],
+            superWeak: [],
+            resistant: ['poison', 'bug', 'fairy'],
+            superResistant: ['fighting', 'grass'],
+            immune: []
         },
         image: {
             front: 'image/Beedrill_Front.png',
             back: 'image/Beedrill_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'X-Scissor',
+                type: 'bug',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Poison Jab',
+                type: 'poison',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Pidgeot': {
         name: 'Pidgeot',
-        type: 'flying',
+        type: ['normal', 'flying'],
         level: 3,
         stats: {
-            attack: 56,
-            health: 380,
+            health: 280,
+            physicalAttack: 195.5,
+            physicalDefense: 188,
+            specialAttack: 180.5,
+            specialDefense: 180.5,
+            speed: 227,
+            attack: 56, // Keeping original attack for backward compatibility
             range: 3
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'flying', 'fighting', 'poison', 'steel', 'psychic', 'water', 'dragon', 'dark', 'fairy'],
+            weak: ['rock', 'electric', 'ice'],
+            superWeak: [],
+            resistant: ['bug', 'grass'],
+            superResistant: [],
+            immune: ['ground', 'ghost']
         },
         image: {
             front: 'image/Pidgeot_Front.png',
             back: 'image/Pidgeot_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Fly',
+                type: 'flying',
+                damage_category: 'Physical',
+                power: 90,
+                accuracy: 95,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Hurricane',
+                type: 'flying',
+                damage_category: 'Special',
+                power: 120,
+                accuracy: 70,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     // New Pokemon - Level 3 Evolutions
     'Dragonite': {
@@ -1629,128 +1784,407 @@ const pokemonData = {
     },
     'Gengar': {
         name: 'Gengar',
-        type: 'ghost',
+        type: ['ghost', 'poison'],
         level: 3,
         stats: {
-            attack: 88,
-            health: 280,
+            health: 245.5,
+            physicalAttack: 173,
+            physicalDefense: 165.5,
+            specialAttack: 270.5,
+            specialDefense: 188,
+            speed: 240.5,
+            attack: 88, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: [ 'fire', 'flying', 'steel', 'water', 'dragon', 'rock', 'electric', 'ice'],
+            weak: ['ground', 'dark', 'psychic', 'ghost'],
+            superWeak: [],
+            resistant: ['fairy', 'grass'],
+            superResistant: ['bug', 'poison'],
+            immune: ['normal', 'fighting']
         },
         image: {
             front: 'image/Gengar_Front.png',
             back: 'image/Gengar_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Dream Eater',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 100,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Dark Pulse',
+                type: 'dark',
+                damage_category: 'Special',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Golem': {
         name: 'Golem',
-        type: 'rock',
+        type: ['rock', 'ground'],
         level: 3,
         stats: {
-            attack: 64,
-            health: 520,
+            health: 275.5,
+            physicalAttack: 255.5,
+            physicalDefense: 270.5,
+            specialAttack: 158,
+            specialDefense: 173,
+            speed: 143,
+            attack: 64, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['fairy', 'bug', 'ghost', 'psychic', 'dragon', 'dark'],
+            weak: ['ground', 'fighting', 'steel', 'ice'],
+            superWeak: ['grass', 'water'],
+            resistant: ['normal', 'flying', 'fire', 'rock'],
+            superResistant: ['poison'],
+            immune: ['electric']
         },
         image: {
             front: 'image/Golem_Front.png',
             back: 'image/Golem_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Earthquake',
+                type: 'ground',
+                damage_category: 'Physical',
+                power: 100,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Double-Edge',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 120,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Victreebel': {
         name: 'Victreebel',
-        type: 'grass',
+        type: ['grass', 'poison'],
         level: 3,
         stats: {
-            attack: 68,
-            health: 340,
+            health: 275.5,
+            physicalAttack: 233,
+            physicalDefense: 173,
+            specialAttack: 225.5,
+            specialDefense: 180.5,
+            speed: 180.5,
+            attack: 68, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
+            weak: ['flying', 'fire', 'psychic', 'ice'],
+            superWeak: [],
+            resistant: ['fighting', 'water', 'electric', 'fairy'],
+            superResistant: ['grass'],
+            immune: []
         },
         image: {
             front: 'image/Victreebel_Front.png',
             back: 'image/Victreebel_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Leaf Storm',
+                type: 'grass',
+                damage_category: 'Special',
+                power: 140,
+                accuracy: 90,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Leaf Blade',
+                type: 'grass',
+                damage_category: 'Physical',
+                power: 90,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Machamp': {
         name: 'Machamp',
         type: 'fighting',
         level: 3,
         stats: {
-            attack: 84,
-            health: 440,
+            health: 290.5,
+            physicalAttack: 270.5,
+            physicalDefense: 195.5,
+            specialAttack: 173,
+            specialDefense: 203,
+            speed: 158,
+            attack: 84, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ghost', 'water', 'fighting', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'poison', 'dragon'],
+            weak: ['psychic', 'fairy', 'flying'],
+            superWeak: [],
+            resistant: ['rock', 'bug', 'dark'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Machamp_Front.png',
             back: 'image/Machamp_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Strength',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Cross Chop',
+                type: 'fighting',
+                damage_category: 'Physical',
+                power: 100,
+                accuracy: 80,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Alakazam': {
         name: 'Alakazam',
         type: 'psychic',
         level: 3,
         stats: {
-            attack: 100,
-            health: 260,
+            health: 238,
+            physicalAttack: 150.5,
+            physicalDefense: 143,
+            specialAttack: 278,
+            specialDefense: 218,
+            speed: 255.5,
+            attack: 100, // Keeping original attack for backward compatibility
             range: 3
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fairy', 'flying', 'water', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'rock', 'poison', 'dragon'],
+            weak: ['bug', 'ghost', 'dark'],
+            superWeak: [],
+            resistant: ['psychic', 'fighting'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Alakazam_Front.png',
             back: 'image/Alakazam_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Psychic',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 90,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Future Sight',
+                type: 'psychic',
+                damage_category: 'Special',
+                power: 100,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Poliwrath': {
         name: 'Poliwrath',
-        type: 'water',
+        type: ['water', 'fighting'],
         level: 3,
         stats: {
-            attack: 56,
-            health: 420,
+            health: 290.5,
+            physicalAttack: 218,
+            physicalDefense: 218,
+            specialAttack: 180.5,
+            specialDefense: 210.5,
+            speed: 180.5,
+            attack: 56, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fighting', 'ground', 'ghost', 'poison', 'dragon'],
+            weak: ['fairy', 'flying', 'psychic', 'electric', 'grass'],
+            superWeak: [],
+            resistant: ['rock', 'bug', 'water', 'ice', 'steel', 'fire', 'dark'],
+            superResistant: [],
+            immune: []
         },
         image: {
             front: 'image/Poliwrath_Front.png',
             back: 'image/Poliwrath_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Waterfall',
+                type: 'water',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Submission',
+                type: 'fighting',
+                damage_category: 'Physical',
+                power: 80,
+                accuracy: 80,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Vileplume': {
         name: 'Vileplume',
-        type: 'grass',
+        type: ['grass', 'poison'],
         level: 3,
         stats: {
-            attack: 64,
-            health: 380,
+            health: 268,
+            physicalAttack: 195.5,
+            physicalDefense: 203,
+            specialAttack: 240.5,
+            specialDefense: 210.5,
+            speed: 150.5,
+            attack: 64, // Keeping original attack for backward compatibility
             range: 2
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
+            weak: ['fire', 'flying', 'ice', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'water', 'electric', 'fairy'],
+            superResistant: ['grass'],
+            immune: []
         },
         image: {
             front: 'image/Vileplume_Front.png',
             back: 'image/Vileplume_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Petal Dance',
+                type: 'grass',
+                damage_category: 'Special',
+                power: 120,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Sludge Bomb',
+                type: 'poison',
+                damage_category: 'Special',
+                power: 90,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Nidoking': {
         name: 'Nidoking',
-        type: 'poison',
+        type: ['poison', 'ground'],
         level: 3,
         stats: {
-            attack: 76,
-            health: 400,
+            health: 277,
+            physicalAttack: 228.5,
+            physicalDefense: 191,
+            specialAttack: 203,
+            specialDefense: 188,
+            speed: 203,
+            attack: 76, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'grass', 'ghost', 'flying', 'steel', 'dragon', 'dark'],
+            weak: ['ground', 'water', 'ice', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'bug', 'rock', 'fairy'],
+            superResistant: ['poison'],
+            immune: ['electric']
         },
         image: {
             front: 'image/Nidoking_Front.png',
             back: 'image/Nidoking_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Thrash',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 120,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Megahorn',
+                type: 'bug',
+                damage_category: 'Physical',
+                power: 120,
+                accuracy: 85,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     },
     'Nidoqueen': {
         name: 'Nidoqueen',
-        type: 'poison',
+        type: ['poison', 'ground'],
         level: 3,
         stats: {
-            attack: 68,
-            health: 440,
+            health: 290.5,
+            physicalAttack: 213.5,
+            physicalDefense: 206,
+            specialAttack: 188,
+            specialDefense: 203,
+            speed: 189.5,
+            attack: 68, // Keeping original attack for backward compatibility
             range: 1
+        },
+        typeEffectiveness: {
+            normal: ['normal', 'fire', 'grass', 'ghost', 'flying', 'steel', 'dragon', 'dark'],
+            weak: ['ground', 'water', 'ice', 'psychic'],
+            superWeak: [],
+            resistant: ['fighting', 'bug', 'rock', 'fairy'],
+            superResistant: ['poison'],
+            immune: ['electric']
         },
         image: {
             front: 'image/Nidoqueen_Front.png',
             back: 'image/Nidoqueen_Back.png'
-        }
+        },
+        moves: [
+            {
+                name: 'Body Slam',
+                type: 'normal',
+                damage_category: 'Physical',
+                power: 85,
+                accuracy: 100,
+                image: 'image/move/Tackle_V.png'
+            },
+            {
+                name: 'Superpower',
+                type: 'fighting',
+                damage_category: 'Physical',
+                power: 120,
+                accuracy: 100,
+                image: 'image/move/Vine_Whip_V.png'
+            }
+        ]
     }
 };

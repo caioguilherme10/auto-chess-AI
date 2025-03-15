@@ -85,8 +85,6 @@
 
             <div class="side-panel">
                 <div class="controls">
-                    <button id="refresh-shop">Refresh Shop (2 Gold)</button>
-                    <button id="buy-exp">Buy EXP (4 Gold)</button>
                     <button id="start-battle">Start Battle</button>
                 </div>
 
@@ -103,6 +101,10 @@
             <div class="bench-container">
                 <h2>Bench</h2>
                 <div class="bench-area">
+                    <div class="trash-bin" id="trash-bin">
+                        <img src="image/trash-bin.svg" alt="Trash Bin" width="40" height="40">
+                        <div class="trash-bin-label">Sell</div>
+                    </div>
                     <div class="bench" id="player-bench">
                         <div class="bench-slot" data-slot="0"></div>
                         <div class="bench-slot" data-slot="1"></div>
@@ -114,21 +116,27 @@
                         <div class="bench-slot" data-slot="7"></div>
                         <div class="bench-slot" data-slot="8"></div>
                     </div>
-                    <div class="trash-bin" id="trash-bin">
-                        <img src="image/trash-bin.svg" alt="Trash Bin" width="40" height="40">
-                        <div class="trash-bin-label">Sell</div>
-                    </div>
                 </div>
             </div>
 
             <div class="shop-container">
                 <h2>Shop</h2>
-                <div class="shop" id="pokemon-shop">
-                    <div class="shop-slot" data-shop="0"></div>
-                    <div class="shop-slot" data-shop="1"></div>
-                    <div class="shop-slot" data-shop="2"></div>
-                    <div class="shop-slot" data-shop="3"></div>
-                    <div class="shop-slot" data-shop="4"></div>
+                <div class="shop-area">
+                    <div class="buy-exp" id="buy-exp">
+                        <img src="image/buy-exp.svg" alt="Buy EXP" width="40" height="40">
+                        <div class="buy-exp-label">Buy EXP (4 Gold)</div>
+                    </div>
+                    <div class="shop" id="pokemon-shop">
+                        <div class="shop-slot" data-shop="0"></div>
+                        <div class="shop-slot" data-shop="1"></div>
+                        <div class="shop-slot" data-shop="2"></div>
+                        <div class="shop-slot" data-shop="3"></div>
+                        <div class="shop-slot" data-shop="4"></div>
+                    </div>
+                    <div class="refresh-shop" id="refresh-shop">
+                        <img src="image/refresh-shop.svg" alt="Refresh Shop" width="40" height="40">
+                        <div class="refresh-shop-label">Refresh (2 Gold)</div>
+                    </div>
                 </div>
             </div>
         </div>

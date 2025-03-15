@@ -1,6 +1,11 @@
 # Pokémon Auto Chess - Game Wiki
 
+## AI-Powered Development
+
+This Pokémon Auto Chess game was developed on Trae.ai, leveraging the power of multiple AI models. The primary development assistant was Claude-3.7-Sonnet, with additional support from Gemini 2.0 Flash and DeepSeek R1. These AI tools helped with code generation, game design, and documentation, showcasing the potential of AI-assisted game development.
+
 ## Table of Contents
+- [AI-Powered Development](#ai-powered-development)
 - [Game Overview](#game-overview)
 - [Game Mechanics](#game-mechanics)
   - [Gold and Economy](#gold-and-economy)
@@ -10,9 +15,11 @@
   - [Types](#types)
   - [Stats](#stats)
   - [Evolution System](#evolution-system)
+  - [Type Effectiveness](#type-effectiveness)
 - [Battle System](#battle-system)
   - [Battle Board](#battle-board)
   - [Combat Mechanics](#combat-mechanics)
+  - [Damage Calculation](#damage-calculation)
   - [Range and Targeting](#range-and-targeting)
 - [Shop System](#shop-system)
   - [Buying Pokémon](#buying-pokémon)
@@ -68,12 +75,22 @@ Pokémon come in various types, each with their own strengths:
 - Fighting
 - Psychic
 - Poison
+- Electric
+- Ice
+- Ground
+- Normal
+- Steel
+- Dark
 
 ### Stats
 
 Each Pokémon has the following stats:
-- **Attack**: Determines damage dealt in battle
 - **Health**: How much damage a Pokémon can take before fainting
+- **Physical Attack**: Determines damage dealt with physical moves
+- **Physical Defense**: Reduces damage taken from physical moves
+- **Special Attack**: Determines damage dealt with special moves
+- **Special Defense**: Reduces damage taken from special moves
+- **Speed**: Affects critical hit chance and potentially attack order
 - **Range**: How far a Pokémon can attack (1 = adjacent cells only, 2-3 = can attack from distance)
 
 ### Evolution System
@@ -104,6 +121,23 @@ Pokémon can evolve into stronger forms:
    - Higher sell value
    - Better combat performance
 
+### Type Effectiveness
+
+Pokémon types have strengths and weaknesses against other types:
+
+- **Super Effective (2x damage)**: When a move is particularly effective against a type
+- **Not Very Effective (0.5x damage)**: When a move is resisted by a type
+- **No Effect (0x damage)**: When a move has no effect against a type
+
+Examples:
+- Fire moves deal 2x damage to Grass Pokémon
+- Water moves deal 0.5x damage to Water Pokémon
+- Ground moves have no effect on Flying Pokémon
+
+Dual-type Pokémon combine the resistances and weaknesses of both types, which can result in:
+- **Super Weakness (4x damage)**: When both types are weak to the same move
+- **Super Resistance (0.25x damage)**: When both types resist the same move
+
 ## Battle System
 
 ### Battle Board
@@ -119,11 +153,27 @@ Pokémon can evolve into stronger forms:
 1. **Battle Initiation**: Press the "Start Battle" button to begin
 2. **Enemy Generation**: Enemies are generated based on player level
 3. **Turn-Based Combat**: Pokémon attack in rounds
-4. **Damage Calculation**: Damage is based on the attacker's attack stat
-5. **Battle End**: Battle ends when all Pokémon on one side are defeated or after 30 rounds
-6. **Rewards/Penalties**:
+4. **Battle End**: Battle ends when all Pokémon on one side are defeated or after 30 rounds
+5. **Rewards/Penalties**:
    - Victory: Gain gold
    - Defeat: Lose health
+
+### Damage Calculation
+
+Damage is calculated using the following formula:
+
+`Damage = ([([(2 * Level / 5) + 2] * Power * [A/D]) / 50] + 2) * Critical * Type`
+
+Where:
+- **Level**: Pokémon's level (mapped as Level 1 = 25, Level 2 = 50, Level 3 = 75)
+- **Power**: The base power of the move being used
+- **A/D**: Attacker's Attack stat divided by Defender's Defense stat
+  - For Physical moves: Physical Attack ÷ Physical Defense
+  - For Special moves: Special Attack ÷ Special Defense
+- **Critical**: 2 if the attack is a critical hit, 1 otherwise
+- **Type**: Type effectiveness multiplier (0, 0.25, 0.5, 1, 2, or 4)
+
+Critical hits have a base chance of 6.25%, which can increase based on the attacker's Speed stat (up to a maximum of 25%).
 
 ### Range and Targeting
 
