@@ -1490,7 +1490,7 @@ function simulateBattle() {
                 animateAttack(unit, target);
                 
                 // Calculate damage
-                const damage = unit.stats.attack;
+                const damage = unit.stats.physicalAttack || unit.stats.specialAttack;
                 target.currentHealth -= damage;
                 
                 // Check if target died

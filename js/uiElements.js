@@ -170,12 +170,11 @@ function displayPokemonInfo(pokemon) {
                 <h4 class="section-title">Stats</h4>
                 <div class="stats-grid">
                     <div class="stat"><span class="stat-label">HP:</span> <span class="stat-value">${pokemon.stats.health}</span></div>
-                    <div class="stat"><span class="stat-label">Attack:</span> <span class="stat-value">${pokemon.stats.attack}</span></div>
                     <div class="stat"><span class="stat-label">Range:</span> <span class="stat-value">${pokemon.stats.range}</span></div>
-                    ${pokemon.stats.physicalAttack ? `<div class="stat"><span class="stat-label">Physical Atk:</span> <span class="stat-value">${pokemon.stats.physicalAttack}</span></div>` : ''}
-                    ${pokemon.stats.physicalDefense ? `<div class="stat"><span class="stat-label">Physical Def:</span> <span class="stat-value">${pokemon.stats.physicalDefense}</span></div>` : ''}
-                    ${pokemon.stats.specialAttack ? `<div class="stat"><span class="stat-label">Special Atk:</span> <span class="stat-value">${pokemon.stats.specialAttack}</span></div>` : ''}
-                    ${pokemon.stats.specialDefense ? `<div class="stat"><span class="stat-label">Special Def:</span> <span class="stat-value">${pokemon.stats.specialDefense}</span></div>` : ''}
+                    <div class="stat"><span class="stat-label">Physical Atk:</span> <span class="stat-value">${pokemon.stats.physicalAttack}</span></div>
+                    <div class="stat"><span class="stat-label">Physical Def:</span> <span class="stat-value">${pokemon.stats.physicalDefense}</span></div>
+                    <div class="stat"><span class="stat-label">Special Atk:</span> <span class="stat-value">${pokemon.stats.specialAttack}</span></div>
+                    <div class="stat"><span class="stat-label">Special Def:</span> <span class="stat-value">${pokemon.stats.specialDefense}</span></div>
                     ${pokemon.stats.speed ? `<div class="stat"><span class="stat-label">Speed:</span> <span class="stat-value">${pokemon.stats.speed}</span></div>` : ''}
                 </div>
             </div>

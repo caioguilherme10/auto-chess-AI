@@ -16,7 +16,6 @@ const pokemonData = {
             specialAttack: 61,
             specialDefense: 61,
             speed: 51,
-            attack: 15, // Keeping original stat for backward compatibility
             range: 2
         },
         typeEffectiveness: {

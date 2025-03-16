@@ -25,15 +25,15 @@ function calculateDamage(attacker, defender, move, isCritical = false, typeEffec
     let attackStat, defenseStat;
     
     if (move.damage_category === 'Physical') {
-        attackStat = attacker.stats.physicalAttack || attacker.stats.attack;
-        defenseStat = defender.stats.physicalDefense || defender.stats.attack;
+        attackStat = attacker.stats.physicalAttack;
+        defenseStat = defender.stats.physicalDefense;
     } else if (move.damage_category === 'Special') {
-        attackStat = attacker.stats.specialAttack || attacker.stats.attack;
-        defenseStat = defender.stats.specialDefense || defender.stats.attack;
+        attackStat = attacker.stats.specialAttack;
+        defenseStat = defender.stats.specialDefense;
     } else {
         // Default to physical if not specified
-        attackStat = attacker.stats.physicalAttack || attacker.stats.attack;
-        defenseStat = defender.stats.physicalDefense || defender.stats.attack;
+        attackStat = attacker.stats.physicalAttack;
+        defenseStat = defender.stats.physicalDefense;
     }
     
     // Critical hit multiplier (2 if critical, 1 if not)

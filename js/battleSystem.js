@@ -280,7 +280,7 @@ function animateAttack(attacker, target, move, isCritical, damage, typeEffective
         
         // Show move name
         const moveNameElement = document.createElement('div');
-        moveNameElement.className = 'move-name';
+        moveNameElement.className = 'battle-move-name';
         moveNameElement.textContent = move.name;
         moveNameElement.style.left = `${attackerRect.left + attackerRect.width/2}px`;
         moveNameElement.style.top = `${attackerRect.top - 20}px`;
