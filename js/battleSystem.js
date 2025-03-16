@@ -171,18 +171,22 @@ function simulateBattle() {
             // Find target
             const target = findTarget(unit);
             if (target) {
-                // Attack animation
-                animateAttack(unit, target);
-                
-                // Calculate damage using the new formula
-                // First, determine which move to use (for now, just use the first move if available)
-                const move = unit.moves && unit.moves.length > 0 ? unit.moves[0] : {
-                    name: 'Tackle',
-                    type: 'normal',
-                    damage_category: 'Physical',
-                    power: 40,
-                    accuracy: 100
-                };
+                // Randomly select a move from the unit's move list
+                let move;
+                if (unit.moves && unit.moves.length > 0) {
+                    // Randomly select a move from available moves
+                    const moveIndex = Math.floor(Math.random() * unit.moves.length);
+                    move = unit.moves[moveIndex];
+                } else {
+                    // Fallback to default move if no moves available
+                    move = {
+                        name: 'Tackle',
+                        type: 'normal',
+                        damage_category: 'Physical',
+                        power: 40,
+                        accuracy: 100
+                    };
+                }
                 
                 // Calculate type effectiveness
                 const typeEffectiveness = calculateTypeEffectiveness(move.type, target.type);
@@ -193,6 +197,9 @@ function simulateBattle() {
                 // Calculate damage using the formula
                 const damage = calculateDamage(unit, target, move, critical, typeEffectiveness);
                 target.currentHealth -= damage;
+                
+                // Attack animation with move, critical status, damage, and type effectiveness
+                animateAttack(unit, target, move, critical, damage, typeEffectiveness);
                 
                 // Check if target died
                 if (target.currentHealth <= 0) {
@@ -250,7 +257,7 @@ function findTarget(unit) {
 }
 
 // Animate attack
-function animateAttack(attacker, target) {
+function animateAttack(attacker, target, move, isCritical, damage, typeEffectiveness) {
     // Get DOM elements
     const attackerCell = document.querySelector(`.cell[data-position="${attacker.position.row}-${attacker.position.col}"]`);
     const targetCell = document.querySelector(`.cell[data-position="${target.position.row}-${target.position.col}"]`);
@@ -258,7 +265,7 @@ function animateAttack(attacker, target) {
     if (attackerCell && targetCell) {
         // Create attack animation element
         const attackAnimation = document.createElement('div');
-        attackAnimation.className = `attack-animation type-${attacker.type}`;
+        attackAnimation.className = `attack-animation type-${move.type}`;
         
         // Position the animation
         document.body.appendChild(attackAnimation);
@@ -270,6 +277,14 @@ function animateAttack(attacker, target) {
         // Set start position
         attackAnimation.style.left = `${attackerRect.left + attackerRect.width/2}px`;
         attackAnimation.style.top = `${attackerRect.top + attackerRect.height/2}px`;
+        
+        // Show move name
+        const moveNameElement = document.createElement('div');
+        moveNameElement.className = 'move-name';
+        moveNameElement.textContent = move.name;
+        moveNameElement.style.left = `${attackerRect.left + attackerRect.width/2}px`;
+        moveNameElement.style.top = `${attackerRect.top - 20}px`;
+        document.body.appendChild(moveNameElement);
         
         // Animate to target
         setTimeout(() => {
@@ -283,13 +298,58 @@ function animateAttack(attacker, target) {
                 hitEffect.className = 'hit-effect';
                 targetCell.appendChild(hitEffect);
                 
+                // Show damage number with color based on effectiveness and critical
+                const damageElement = document.createElement('div');
+                damageElement.className = 'damage-number';
+                
+                // Add effectiveness class
+                if (typeEffectiveness > 1) {
+                    damageElement.classList.add('damage-effective');
+                    damageElement.textContent = `${damage} Super effective!`;
+                } else if (typeEffectiveness < 1 && typeEffectiveness > 0) {
+                    damageElement.classList.add('damage-not-effective');
+                    damageElement.textContent = `${damage} Not very effective...`;
+                } else if (typeEffectiveness === 0) {
+                    damageElement.classList.add('damage-not-effective');
+                    damageElement.textContent = `${damage} No effect...`;
+                } else {
+                    damageElement.classList.add('damage-normal');
+                    damageElement.textContent = damage;
+                }
+                
+                // Add critical class
+                if (isCritical) {
+                    damageElement.classList.add('damage-critical');
+                }
+                
+                damageElement.style.left = `${targetRect.left + targetRect.width/2}px`;
+                damageElement.style.top = `${targetRect.top}px`;
+                document.body.appendChild(damageElement);
+                
+                // Show critical hit text if critical
+                if (isCritical) {
+                    const criticalElement = document.createElement('div');
+                    criticalElement.className = 'critical-hit';
+                    criticalElement.textContent = 'CRITICAL!';
+                    criticalElement.style.left = `${targetRect.left + targetRect.width/2}px`;
+                    criticalElement.style.top = `${targetRect.top - 20}px`;
+                    document.body.appendChild(criticalElement);
+                    
+                    // Remove critical text after animation
+                    setTimeout(() => {
+                        criticalElement.remove();
+                    }, 1000);
+                }
+                
                 // Remove hit effect after animation
                 setTimeout(() => {
                     hitEffect.remove();
-                }, 300);
+                    damageElement.remove();
+                }, 1000);
                 
-                // Remove attack animation
+                // Remove attack animation and move name
                 attackAnimation.remove();
+                moveNameElement.remove();
             }, 300);
         }, 50);
     }

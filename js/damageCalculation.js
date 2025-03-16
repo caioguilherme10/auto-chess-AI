@@ -225,12 +225,14 @@ function calculateTypeEffectiveness(moveType, defenderType) {
 /**
  * Determine if an attack is a critical hit
  * 
+ * The base critical hit chance is exactly 1/16 (6.25%)
+ * 
  * @param {Object} attacker - The attacking Pokemon
  * @returns {boolean} - Whether the attack is a critical hit
  */
 function isCriticalHit(attacker) {
-    // Base critical hit rate (6.25%)
-    const baseCritRate = 0.0625;
+    // Base critical hit rate is 1/16 (6.25%)
+    const baseCritRate = 0.0625; // Exactly 1/16
     
     // Speed can influence critical hit rate
     const speedFactor = attacker.stats.speed ? (attacker.stats.speed / 512) : 0;
