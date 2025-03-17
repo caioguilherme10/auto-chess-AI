@@ -54,6 +54,9 @@ function calculateDamage(attacker, defender, move, isCritical = false, typeEffec
  * @returns {number} - The type effectiveness multiplier
  */
 function calculateTypeEffectiveness(moveType, defenderType) {
+    // Convert moveType to lowercase to match typeChart keys
+    moveType = moveType.toLowerCase();
+    
     // Type effectiveness chart
     const typeChart = {
         'normal': {
@@ -206,15 +209,18 @@ function calculateTypeEffectiveness(moveType, defenderType) {
     if (Array.isArray(defenderType)) {
         let effectiveness = 1;
         defenderType.forEach(type => {
-            if (typeChart[moveType] && typeChart[moveType][type]) {
-                effectiveness *= typeChart[moveType][type];
+            // Convert each defender type to lowercase
+            const defType = type.toLowerCase();
+            if (typeChart[moveType] && typeChart[moveType][defType]) {
+                effectiveness *= typeChart[moveType][defType];
             }
         });
         return effectiveness;
     } else {
-        // Single type
-        if (typeChart[moveType] && typeChart[moveType][defenderType]) {
-            return typeChart[moveType][defenderType];
+        // Single type - convert to lowercase
+        const defType = defenderType.toLowerCase();
+        if (typeChart[moveType] && typeChart[moveType][defType]) {
+            return typeChart[moveType][defType];
         }
     }
     

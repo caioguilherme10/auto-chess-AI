@@ -148,17 +148,12 @@ function generateEnemyBoard() {
         }
     }
     
-    // Debug information about possible enemies
-    console.log('Stage:', gameState.stage, 'Max Enemy Level:', maxEnemyLevel);
-    console.log('Possible enemies count:', possibleEnemies.length);
-    
     // Count Pokemon by level for debugging
     const levelCounts = {};
     possibleEnemies.forEach(name => {
         const level = pokemonData[name].level;
         levelCounts[level] = (levelCounts[level] || 0) + 1;
     });
-    console.log('Pokemon counts by level:', levelCounts);
     
     // Generate random enemy units and distribute them in the enemy area (rows 0-2)
     for (let i = 0; i < enemyUnitCount; i++) {
@@ -395,15 +390,21 @@ function animateAttack(attacker, target, move, isCritical, damage, typeEffective
                 damageElement.className = 'damage-number';
                 
                 // Add effectiveness class
-                if (typeEffectiveness > 1) {
+                if (typeEffectiveness >= 2) {
                     damageElement.classList.add('damage-effective');
-                    damageElement.textContent = `${damage} Super effective!`;
-                } else if (typeEffectiveness < 1 && typeEffectiveness > 0) {
+                    damageElement.textContent = `${damage} Super Weak!`;
+                } else if (typeEffectiveness > 1 && typeEffectiveness < 2) {
+                    damageElement.classList.add('damage-effective');
+                    damageElement.textContent = `${damage} Weak!`;
+                } else if (typeEffectiveness > 0.5 && typeEffectiveness < 1) {
                     damageElement.classList.add('damage-not-effective');
-                    damageElement.textContent = `${damage} Not very effective...`;
+                    damageElement.textContent = `${damage} Resistant!`;
+                } else if (typeEffectiveness > 0 && typeEffectiveness <= 0.5) {
+                    damageElement.classList.add('damage-not-effective');
+                    damageElement.textContent = `${damage} Super Resistant!`;
                 } else if (typeEffectiveness === 0) {
                     damageElement.classList.add('damage-not-effective');
-                    damageElement.textContent = `${damage} No effect...`;
+                    damageElement.textContent = `${damage} Immune!`;
                 } else {
                     damageElement.classList.add('damage-normal');
                     damageElement.textContent = damage;
