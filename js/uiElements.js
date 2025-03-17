@@ -6,6 +6,11 @@ function createPokemonElement(pokemon) {
     element.className = 'pokemon';
     element.dataset.id = pokemon.id;
     
+    // Add data-cost attribute for CSS styling if cost exists
+    if (pokemon.cost) {
+        element.setAttribute('data-cost', pokemon.cost);
+    }
+    
     // Add type indicator
     const typeIndicator = document.createElement('div');
     if (Array.isArray(pokemon.type)) {

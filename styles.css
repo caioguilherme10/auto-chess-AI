@@ -33,6 +33,17 @@ body {
     gap: 20px;
 }
 
+.stage, .round {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.victory {
+    background-color: rgba(76, 175, 80, 0.9) !important;
+    border: 2px solid #2e7d32;
+}
+
 .gold, .health, .level {
     font-weight: bold;
     font-size: 18px;
@@ -677,9 +688,6 @@ button:disabled {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    background-color: gold;
-    background-image: linear-gradient(to bottom, gold, #e6c200);
-    color: #333;
     font-size: 12px;
     font-weight: bold;
     padding: 3px 6px;
@@ -687,6 +695,25 @@ button:disabled {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     z-index: 2;
+    color: #333;
+}
+
+/* Green cost indicator for 1 gold */
+[data-cost="1"] .pokemon-cost {
+    background-color: #4CAF50;
+    background-image: linear-gradient(to bottom, #4CAF50, #388E3C);
+}
+
+/* Blue cost indicator for 2 gold */
+[data-cost="2"] .pokemon-cost {
+    background-color: #2196F3;
+    background-image: linear-gradient(to bottom, #2196F3, #1976D2);
+}
+
+/* Purple cost indicator for 3 gold */
+[data-cost="3"] .pokemon-cost {
+    background-color: #9C27B0;
+    background-image: linear-gradient(to bottom, #9C27B0, #7B1FA2);
 }
 
 .pokemon:hover .pokemon-cost {

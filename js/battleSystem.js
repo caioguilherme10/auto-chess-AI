@@ -69,16 +69,18 @@ function startBattle() {
     simulateBattle();
 }
 
-// Generate enemy board based on player level
+// Generate enemy board based on player level and current stage
 function generateEnemyBoard() {
     gameState.enemyBoard = [];
     
-    // Number of enemy units based on player level
-    const enemyUnitCount = Math.min(gameState.level + 2, 8);
+    // Number of enemy units based on player level and stage
+    const stageBonus = Math.floor(gameState.stage / 2);
+    const enemyUnitCount = Math.min(gameState.level + stageBonus + 2, 8);
     
-    // Possible Pokemon types for enemies
+    // Possible Pokemon types for enemies - scale with stage
+    const maxEnemyLevel = Math.ceil(gameState.level / 3) + Math.floor(gameState.stage / 2);
     const possibleEnemies = Object.keys(pokemonData).filter(name => {
-        return pokemonData[name].level <= Math.ceil(gameState.level / 3);
+        return pokemonData[name].level <= maxEnemyLevel;
     });
     
     // Generate random enemy units and distribute them in the enemy area (rows 0-2)
@@ -89,10 +91,23 @@ function generateEnemyBoard() {
         const row = Math.floor(i / 3);
         const col = i % 8;
         
+        // Scale enemy stats based on stage
+        const statMultiplier = 1 + (gameState.stage * 0.1) + ((gameState.round - 1) * 0.05);
+        const baseStats = pokemonData[randomPokemon].stats;
+        
         const enemyUnit = { 
             ...pokemonData[randomPokemon],
             id: generateUniqueId(),
-            currentHealth: pokemonData[randomPokemon].stats.health,
+            stats: {
+                physicalAttack: Math.floor(baseStats.physicalAttack * statMultiplier),
+                physicalDefense: Math.floor(baseStats.physicalDefense * statMultiplier),
+                specialAttack: Math.floor(baseStats.specialAttack * statMultiplier),
+                specialDefense: Math.floor(baseStats.specialDefense * statMultiplier),
+                health: Math.floor(baseStats.health * statMultiplier),
+                speed: Math.floor(baseStats.speed * statMultiplier),
+                range: baseStats.range
+            },
+            currentHealth: Math.floor(baseStats.health * statMultiplier),
             position: { row: row, col: col },
             isEnemy: true
         };
@@ -365,23 +380,34 @@ function endBattle(playerWon) {
     // Process battle results
     if (playerWon) {
         // Player won - give rewards
-        const goldReward = 5 + gameState.level;
+        const stageBonus = Math.floor(gameState.stage / 2);
+        const goldReward = 5 + gameState.level + stageBonus;
         gameState.gold += goldReward;
         
+        // Progress to next round or stage
+        progressStage();
+        
         // Show victory message
-        showBattleResult(`Victory! You earned ${goldReward} gold.`);
+        showBattleResult(`Victory! You earned ${goldReward} gold. Stage ${gameState.stage}, Round ${gameState.round}/${gameState.maxRounds}`);
     } else {
         // Player lost - take damage
-        const damage = Math.min(gameState.level + 2, 10);
+        const stageDamageBonus = Math.floor(gameState.stage / 2);
+        const damage = Math.min(gameState.level + stageDamageBonus + 2, 15);
         gameState.health -= damage;
         
         // Show defeat message
-        showBattleResult(`Defeat! You lost ${damage} health.`);
+        showBattleResult(`Defeat! You lost ${damage} health. Try again!`);
         
         // Check game over
         if (gameState.health <= 0) {
             gameOver();
         }
+    }
+    
+    // Check for victory condition (completed all stages with more than 50 health)
+    if (gameState.stage > 7 && gameState.health > 50) {
+        showVictory();
+        return;
     }
     
     // Reset board to pre-battle state

@@ -14,7 +14,10 @@ const gameState = {
     dragSource: null,
     inBattle: false,
     enemyBoard: [],
-    battleUnits: []
+    battleUnits: [],
+    stage: 1, // Current stage (1-7)
+    round: 1, // Current round within the stage
+    maxRounds: 3 // Number of rounds per stage (increases with stage)
 };
 
 // DOM Elements
@@ -31,6 +34,8 @@ let startBattleButton;
 let evolutionAnimation;
 let preEvolutionImg;
 let postEvolutionImg;
+let stageElement;
+let roundElement;
 
 // Initialize the game
 function initGame() {
@@ -49,6 +54,24 @@ function initGame() {
     preEvolutionImg = document.getElementById('pre-evolution');
     postEvolutionImg = document.getElementById('post-evolution');
     
+    // Create stage and round elements if they don't exist
+    if (!document.getElementById('stage-amount')) {
+        const playerStats = document.querySelector('.player-stats');
+        const stageDiv = document.createElement('div');
+        stageDiv.className = 'stage';
+        stageDiv.innerHTML = 'Stage: <span id="stage-amount">1</span>';
+        playerStats.appendChild(stageDiv);
+        
+        const roundDiv = document.createElement('div');
+        roundDiv.className = 'round';
+        roundDiv.innerHTML = 'Round: <span id="round-amount">1</span>/<span id="max-rounds">3</span>';
+        playerStats.appendChild(roundDiv);
+    }
+    
+    stageElement = document.getElementById('stage-amount');
+    roundElement = document.getElementById('round-amount');
+    maxRoundsElement = document.getElementById('max-rounds');
+    
     updateStats();
     refreshShop();
     setupEventListeners();
@@ -61,6 +84,11 @@ function updateStats() {
     goldElement.textContent = gameState.gold;
     healthElement.textContent = gameState.health;
     levelElement.textContent = gameState.level;
+    
+    // Update stage and round display
+    if (stageElement) stageElement.textContent = gameState.stage;
+    if (roundElement) roundElement.textContent = gameState.round;
+    if (maxRoundsElement) maxRoundsElement.textContent = gameState.maxRounds;
     
     // Update max board units based on level
     gameState.maxBoardUnits = gameState.level + 2;
@@ -93,6 +121,9 @@ function resetGame() {
     gameState.inBattle = false;
     gameState.enemyBoard = [];
     gameState.battleUnits = [];
+    gameState.stage = 1;
+    gameState.round = 1;
+    gameState.maxRounds = 3;
     
     // Re-initialize game
     initGame();
@@ -111,6 +142,7 @@ function gameOver() {
     gameOverElement.innerHTML = `
         <h2>Game Over</h2>
         <p>You reached level ${gameState.level}</p>
+        <p>You reached stage ${gameState.stage}, round ${gameState.round}</p>
         <button id="restart-game">Play Again</button>
     `;
     
@@ -126,4 +158,68 @@ function gameOver() {
     startBattleButton.disabled = true;
     refreshShopButton.disabled = true;
     buyExpButton.disabled = true;
+}
+
+// Show victory screen when player completes all stages
+function showVictory() {
+    // Show victory message
+    const victoryElement = document.createElement('div');
+    victoryElement.className = 'game-over victory'; // Reuse game-over styling with victory modifier
+    victoryElement.innerHTML = `
+        <h2>Victory!</h2>
+        <p>Congratulations! You've completed all stages!</p>
+        <p>Final level: ${gameState.level}</p>
+        <p>Remaining health: ${gameState.health}</p>
+        <button id="restart-game">Play Again</button>
+    `;
+    
+    document.body.appendChild(victoryElement);
+    
+    // Add restart button functionality
+    document.getElementById('restart-game').addEventListener('click', () => {
+        victoryElement.remove();
+        resetGame();
+    });
+    
+    // Disable game controls
+    startBattleButton.disabled = true;
+    refreshShopButton.disabled = true;
+    buyExpButton.disabled = true;
+}
+
+// Progress to next round or stage
+function progressStage() {
+    // Check if we've completed all rounds in the current stage
+    if (gameState.round >= gameState.maxRounds) {
+        // Move to next stage
+        gameState.stage++;
+        gameState.round = 1;
+        
+        // Increase max rounds for higher stages
+        if (gameState.stage <= 3) {
+            gameState.maxRounds = 3;
+        } else if (gameState.stage <= 5) {
+            gameState.maxRounds = 4;
+        } else {
+            gameState.maxRounds = 5;
+        }
+        
+        // Give stage completion bonus
+        const stageBonus = 5 + (gameState.stage * 2);
+        gameState.gold += stageBonus;
+        
+        // Show stage completion message
+        showBattleResult(`Stage ${gameState.stage-1} completed! +${stageBonus} gold bonus.`);
+        
+        // Check for game victory (completed stage 7)
+        if (gameState.stage > 7) {
+            showVictory();
+            return;
+        }
+    } else {
+        // Move to next round in current stage
+        gameState.round++;
+    }
+    
+    updateStats();
 }

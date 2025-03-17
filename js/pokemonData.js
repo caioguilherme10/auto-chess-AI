@@ -5,10 +5,10 @@ const pokemonData = {
     // Base Pokemon (Level 1)
     'Bulbasaur': {
         name: 'Bulbasaur',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 1,
         evolution: 'Ivysaur',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 81,
             physicalAttack: 53,
@@ -19,11 +19,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -33,7 +33,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Tackle',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -41,7 +41,7 @@ const pokemonData = {
             },
             {
                 name: 'Vine Whip',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Physical',
                 power: 35,
                 accuracy: 100,
@@ -51,10 +51,10 @@ const pokemonData = {
     },
     'Charmander': {
         name: 'Charmander',
-        type: 'fire',
+        type: 'Fire',
         level: 1,
         evolution: 'Charmeleon',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 78,
             physicalAttack: 54.5,
@@ -66,10 +66,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'electric', 'psychic', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
-            weak: ['ground', 'rock', 'water'],
+            normal: ['Normal', 'Poison', 'Electric', 'Psychic', 'Flying', 'Ghost', 'Dragon', 'Dark', 'Fighting'],
+            weak: ['Ground', 'Rock', 'Water'],
             superWeak: [],
-            resistant: ['bug', 'steel', 'fire', 'grass', 'ice', 'fairy'],
+            resistant: ['Bug', 'Steel', 'Fire', 'Grass', 'Ice', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -80,7 +80,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Scratch',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 40,
                 accuracy: 100,
@@ -88,7 +88,7 @@ const pokemonData = {
             },
             {
                 name: 'Ember',
-                type: 'fire',
+                type: 'Fire',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -98,10 +98,10 @@ const pokemonData = {
     },
     'Squirtle': {
         name: 'Squirtle',
-        type: 'water',
+        type: 'Water',
         level: 1,
         evolution: 'Wartortle',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 80.5,
             physicalAttack: 52.5,
@@ -113,10 +113,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'bug', 'ground', 'rock', 'poison', 'psychic', 'fairy', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
-            weak: ['grass', 'electric'],
+            normal: ['Normal', 'Bug', 'Ground', 'Rock', 'Poison', 'Psychic', 'Fairy', 'Flying', 'Ghost', 'Dragon', 'Dark', 'Fighting'],
+            weak: ['Grass', 'Electric'],
             superWeak: [],
-            resistant: ['steel', 'fire', 'ice', 'water'],
+            resistant: ['Steel', 'Fire', 'Ice', 'Water'],
             superResistant: [],
             immune: []
         },
@@ -127,7 +127,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Tackle',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -135,7 +135,7 @@ const pokemonData = {
             },
             {
                 name: 'Water Gun',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -145,7 +145,7 @@ const pokemonData = {
     },
     'Caterpie': {
         name: 'Caterpie',
-        type: 'bug',
+        type: 'Bug',
         level: 1,
         evolution: 'Metapod',
         cost: 1,
@@ -160,10 +160,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'steel', 'ice', 'water', 'bug', 'poison', 'psychic', 'fairy', 'electric', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'rock', 'flying'],
+            normal: ['Normal', 'Steel', 'Ice', 'Water', 'Bug', 'Poison', 'Psychic', 'Fairy', 'Electric', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Rock', 'Flying'],
             superWeak: [],
-            resistant: ['grass', 'ground', 'fighting'],
+            resistant: ['Grass', 'Ground', 'Fighting'],
             superResistant: [],
             immune: []
         },
@@ -184,7 +184,7 @@ const pokemonData = {
     },
     'Weedle': {
         name: 'Weedle',
-        type: ['bug', 'poison'],
+        type: ['Bug', 'Poison'],
         level: 1,
         evolution: 'Kakuna',
         cost: 1,
@@ -199,11 +199,11 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'steel', 'ice', 'water', 'electric', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'rock', 'flying', 'psychic'],
+            normal: ['Normal', 'Ground', 'Steel', 'Ice', 'Water', 'Electric', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Rock', 'Flying', 'Psychic'],
             superWeak: [],
-            resistant: ['poison', 'bug', 'fairy'],
-            superResistant: ['fighting', 'grass'],
+            resistant: ['Poison', 'Bug', 'Fairy'],
+            superResistant: ['Fighting', 'Grass'],
             immune: []
         },
         image: {
@@ -213,7 +213,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Poison Sting',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Physical',
                 power: 15,
                 accuracy: 100,
@@ -223,10 +223,10 @@ const pokemonData = {
     },
     'Pidgey': {
         name: 'Pidgey',
-        type: ['normal', 'flying'],
+        type: ['Normal', 'Flying'],
         level: 1,
         evolution: 'Pidgeotto',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 78.5,
             physicalAttack: 51,
@@ -238,12 +238,12 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'flying', 'fighting', 'poison', 'steel', 'psychic', 'water', 'dragon', 'dark', 'fairy'],
-            weak: ['rock', 'electric', 'ice'],
+            normal: ['Normal', 'Fire', 'Flying', 'Fighting', 'Poison', 'Steel', 'Psychic', 'Water', 'Dragon', 'Dark', 'Fairy'],
+            weak: ['Rock', 'Electric', 'Ice'],
             superWeak: [],
-            resistant: ['bug', 'grass'],
+            resistant: ['Bug', 'Grass'],
             superResistant: [],
-            immune: ['ground', 'ghost']
+            immune: ['Ground', 'Ghost']
         },
         image: {
             front: 'image/Pidgey_Front.png',
@@ -252,7 +252,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Tackle',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -260,7 +260,7 @@ const pokemonData = {
             },
             {
                 name: 'Gust',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -271,10 +271,10 @@ const pokemonData = {
     // New Pokemon - Dratini evolution line
     'Dratini': {
         name: 'Dratini',
-        type: 'dragon',
+        type: 'Dragon',
         level: 1,
         evolution: 'Dragonair',
-        cost: 1,
+        cost: 3,
         stats: {
             health: 79,
             physicalAttack: 60.5,
@@ -286,10 +286,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['flying', 'normal', 'fighting', 'ground', 'bug', 'poison', 'dark', 'psychic', 'ghost', 'steel', 'rock'],
-            weak: ['dragon', 'fairy', 'ice'],
+            normal: ['Flying', 'Normal', 'Fighting', 'Ground', 'Bug', 'Poison', 'Dark', 'Psychic', 'Ghost', 'Steel', 'Rock'],
+            weak: ['Dragon', 'Fairy', 'Ice'],
             superWeak: [],
-            resistant: ['fire', 'electric', 'water', 'grass'],
+            resistant: ['Fire', 'Electric', 'Water', 'Grass'],
             superResistant: [],
             immune: []
         },
@@ -300,7 +300,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Twister',
-                type: 'dragon',
+                type: 'Dragon',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -308,7 +308,7 @@ const pokemonData = {
             },
             {
                 name: 'Slam',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 75,
@@ -319,10 +319,10 @@ const pokemonData = {
     // New Pokemon - Gastly evolution line
     'Gastly': {
         name: 'Gastly',
-        type: ['ghost', 'poison'],
+        type: ['Ghost', 'Poison'],
         level: 1,
         evolution: 'Haunter',
-        cost: 1,
+        cost: 3,
         stats: {
             health: 73.5,
             physicalAttack: 46,
@@ -334,12 +334,12 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: [ 'fire', 'flying', 'steel', 'water', 'dragon', 'rock', 'electric', 'ice'],
-            weak: ['dark', 'psychic', 'ghost'],
+            normal: [ 'Fire', 'Flying', 'Steel', 'Water', 'Dragon', 'Rock', 'Electric', 'Ice'],
+            weak: ['Dark', 'Psychic', 'Ghost'],
             superWeak: [],
-            resistant: ['fairy', 'grass'],
-            superResistant: ['bug', 'poison'],
-            immune: ['normal', 'fighting', 'ground']
+            resistant: ['Fairy', 'Grass'],
+            superResistant: ['Bug', 'Poison'],
+            immune: ['Normal', 'Fighting', 'Ground']
         },
         image: {
             front: 'image/Gastly_Front.png',
@@ -348,7 +348,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Lick',
-                type: 'ghost',
+                type: 'Ghost',
                 damage_category: 'Physical',
                 power: 20,
                 accuracy: 100,
@@ -356,7 +356,7 @@ const pokemonData = {
             },
             {
                 name: 'Sucker Punch',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -367,10 +367,10 @@ const pokemonData = {
     // New Pokemon - Geodude evolution line
     'Geodude': {
         name: 'Geodude',
-        type: ['rock', 'ground'],
+        type: ['Rock', 'Ground'],
         level: 1,
         evolution: 'Graveler',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 78.5,
             physicalAttack: 68.5,
@@ -382,12 +382,12 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['fairy', 'bug', 'ghost', 'psychic', 'dragon', 'dark'],
-            weak: ['ground', 'fighting', 'steel', 'ice'],
-            superWeak: ['grass', 'water'],
-            resistant: ['normal', 'flying', 'fire', 'rock'],
-            superResistant: ['poison'],
-            immune: ['electric']
+            normal: ['Fairy', 'Bug', 'Ghost', 'Psychic', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Fighting', 'Steel', 'Ice'],
+            superWeak: ['Grass', 'Water'],
+            resistant: ['Normal', 'Flying', 'Fire', 'Rock'],
+            superResistant: ['Poison'],
+            immune: ['Electric']
         },
         image: {
             front: 'image/Geodude_Front.png',
@@ -396,7 +396,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Tackle',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -404,7 +404,7 @@ const pokemonData = {
             },
             {
                 name: 'Rock Throw',
-                type: 'rock',
+                type: 'Rock',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 90,
@@ -415,10 +415,10 @@ const pokemonData = {
     // New Pokemon - Bellsprout evolution line
     'Bellsprout': {
         name: 'Bellsprout',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 1,
         evolution: 'Weepinbell',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 83.5,
             physicalAttack: 66,
@@ -430,11 +430,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -444,7 +444,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Vine Whip',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Physical',
                 power: 35,
                 accuracy: 100,
@@ -452,7 +452,7 @@ const pokemonData = {
             },
             {
                 name: 'Wrap',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 15,
                 accuracy: 100,
@@ -463,10 +463,10 @@ const pokemonData = {
     // New Pokemon - Machop evolution line
     'Machop': {
         name: 'Machop',
-        type: 'fighting',
+        type: 'Fighting',
         level: 1,
         evolution: 'Machoke',
-        cost: 1,
+        cost: 3,
         stats: {
             health: 93.5,
             physicalAttack: 68.5,
@@ -478,10 +478,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'ghost', 'water', 'fighting', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'poison', 'dragon'],
-            weak: ['psychic', 'fairy', 'flying'],
+            normal: ['Normal', 'Ghost', 'Water', 'Fighting', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Poison', 'Dragon'],
+            weak: ['Psychic', 'Fairy', 'Flying'],
             superWeak: [],
-            resistant: ['rock', 'bug', 'dark'],
+            resistant: ['Rock', 'Bug', 'Dark'],
             superResistant: [],
             immune: []
         },
@@ -492,7 +492,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Karate Chop',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -500,7 +500,7 @@ const pokemonData = {
             },
             {
                 name: 'Low Sweep',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -511,10 +511,10 @@ const pokemonData = {
     // New Pokemon - Abra evolution line
     'Abra': {
         name: 'Abra',
-        type: 'psychic',
+        type: 'Psychic',
         level: 1,
         evolution: 'Kadabra',
-        cost: 1,
+        cost: 3,
         stats: {
             health: 71,
             physicalAttack: 38.5,
@@ -526,10 +526,10 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'fairy', 'flying', 'water', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'rock', 'poison', 'dragon'],
-            weak: ['bug', 'ghost', 'dark'],
+            normal: ['Normal', 'Fairy', 'Flying', 'Water', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Rock', 'Poison', 'Dragon'],
+            weak: ['Bug', 'Ghost', 'Dark'],
             superWeak: [],
-            resistant: ['psychic', 'fighting'],
+            resistant: ['Psychic', 'Fighting'],
             superResistant: [],
             immune: []
         },
@@ -540,7 +540,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Thief',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 40,
                 accuracy: 100,
@@ -551,10 +551,10 @@ const pokemonData = {
     // New Pokemon - Poliwag evolution line
     'Poliwag': {
         name: 'Poliwag',
-        type: 'water',
+        type: 'Water',
         level: 1,
         evolution: 'Poliwhirl',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 78.5,
             physicalAttack: 53.5,
@@ -566,10 +566,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fairy', 'flying', 'psychic', 'fighting', 'ground', 'rock', 'bug', 'ghost', 'poison', 'dragon', 'dark'],
-            weak: ['electric', 'grass'],
+            normal: ['Normal', 'Fairy', 'Flying', 'Psychic', 'Fighting', 'Ground', 'Rock', 'Bug', 'Ghost', 'Poison', 'Dragon', 'Dark'],
+            weak: ['Electric', 'Grass'],
             superWeak: [],
-            resistant: ['water', 'ice', 'steel', 'fire'],
+            resistant: ['Water', 'Ice', 'Steel', 'Fire'],
             superResistant: [],
             immune: []
         },
@@ -580,7 +580,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Bubble',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 20,
                 accuracy: 100,
@@ -588,7 +588,7 @@ const pokemonData = {
             },
             {
                 name: 'Water Gun',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -599,10 +599,10 @@ const pokemonData = {
     // New Pokemon - Oddish evolution line
     'Oddish': {
         name: 'Oddish',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 1,
         evolution: 'Gloom',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 81,
             physicalAttack: 53.5,
@@ -614,11 +614,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
-            weak: ['fire', 'flying', 'ice', 'psychic'],
+            normal: ['Normal', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Poison', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Flying', 'Ice', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -628,7 +628,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Absorb',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Special',
                 power: 20,
                 accuracy: 100,
@@ -636,7 +636,7 @@ const pokemonData = {
             },
             {
                 name: 'Acid',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -647,10 +647,10 @@ const pokemonData = {
     // New Pokemon - NidoranM evolution line
     'NidoranM': {
         name: 'NidoranM',
-        type: 'poison',
+        type: 'Poison',
         level: 1,
         evolution: 'Nidorino',
-        cost: 1,
+        cost: 2,
         stats: {
             health: 81.5,
             physicalAttack: 57,
@@ -662,10 +662,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
-            weak: ['ground', 'psychic'],
+            normal: ['Normal', 'Fire', 'Rock', 'Electric', 'Ghost', 'Flying', 'Steel', 'Ice', 'Water', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            resistant: ['Fighting', 'Poison', 'Bug', 'Grass', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -676,7 +676,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Peck',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Physical',
                 power: 35,
                 accuracy: 100,
@@ -684,7 +684,7 @@ const pokemonData = {
             },
             {
                 name: 'Double Kick',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 30,
                 accuracy: 100,
@@ -695,7 +695,7 @@ const pokemonData = {
     // New Pokemon - NidoranF evolution line
     'NidoranF': {
         name: 'NidoranF',
-        type: 'poison',
+        type: 'Poison',
         level: 1,
         evolution: 'Nidorina',
         cost: 1,
@@ -710,10 +710,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
-            weak: ['ground', 'psychic'],
+            normal: ['Normal', 'Fire', 'Rock', 'Electric', 'Ghost', 'Flying', 'Steel', 'Ice', 'Water', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            resistant: ['Fighting', 'Poison', 'Bug', 'Grass', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -724,7 +724,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Scratch',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 40,
                 accuracy: 100,
@@ -732,7 +732,7 @@ const pokemonData = {
             },
             {
                 name: 'Double Kick',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 30,
                 accuracy: 100,
@@ -744,7 +744,7 @@ const pokemonData = {
     // Level 2 Evolutions
     'Ivysaur': {
         name: 'Ivysaur',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 2,
         evolution: 'Venusaur',
         stats: {
@@ -758,11 +758,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -772,7 +772,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Take Down',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 90,
                 accuracy: 85,
@@ -780,7 +780,7 @@ const pokemonData = {
             },
             {
                 name: 'Razor Leaf',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Physical',
                 power: 55,
                 accuracy: 95,
@@ -790,7 +790,7 @@ const pokemonData = {
     },
     'Charmeleon': {
         name: 'Charmeleon',
-        type: 'fire',
+        type: 'Fire',
         level: 2,
         evolution: 'Charizard',
         stats: {
@@ -804,10 +804,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'electric', 'psychic', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
-            weak: ['ground', 'rock', 'water'],
+            normal: ['Normal', 'Poison', 'Electric', 'Psychic', 'Flying', 'Ghost', 'Dragon', 'Dark', 'Fighting'],
+            weak: ['Ground', 'Rock', 'Water'],
             superWeak: [],
-            resistant: ['bug', 'steel', 'fire', 'grass', 'ice', 'fairy'],
+            resistant: ['Bug', 'Steel', 'Fire', 'Grass', 'Ice', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -818,7 +818,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Fire Fang',
-                type: 'fire',
+                type: 'Fire',
                 damage_category: 'Physical',
                 power: 65,
                 accuracy: 95,
@@ -826,7 +826,7 @@ const pokemonData = {
             },
             {
                 name: 'Flame Burst',
-                type: 'fire',
+                type: 'Fire',
                 damage_category: 'Special',
                 power: 70,
                 accuracy: 100,
@@ -836,7 +836,7 @@ const pokemonData = {
     },
     'Wartortle': {
         name: 'Wartortle',
-        type: 'water',
+        type: 'Water',
         level: 2,
         evolution: 'Blastoise',
         stats: {
@@ -850,10 +850,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'bug', 'ground', 'rock', 'poison', 'psychic', 'fairy', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
-            weak: ['grass', 'electric'],
+            normal: ['Normal', 'Bug', 'Ground', 'Rock', 'Poison', 'Psychic', 'Fairy', 'Flying', 'Ghost', 'Dragon', 'Dark', 'Fighting'],
+            weak: ['Grass', 'Electric'],
             superWeak: [],
-            resistant: ['steel', 'fire', 'ice', 'water'],
+            resistant: ['Steel', 'Fire', 'Ice', 'Water'],
             superResistant: [],
             immune: []
         },
@@ -864,7 +864,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Bite',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -872,7 +872,7 @@ const pokemonData = {
             },
             {
                 name: 'Water Pulse',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 60,
                 accuracy: 100,
@@ -882,7 +882,7 @@ const pokemonData = {
     },
     'Metapod': {
         name: 'Metapod',
-        type: 'bug',
+        type: 'Bug',
         level: 2,
         evolution: 'Butterfree',
         stats: {
@@ -896,10 +896,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'steel', 'ice', 'water', 'bug', 'poison', 'psychic', 'fairy', 'electric', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'rock', 'flying'],
+            normal: ['Normal', 'Steel', 'Ice', 'Water', 'Bug', 'Poison', 'Psychic', 'Fairy', 'Electric', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Rock', 'Flying'],
             superWeak: [],
-            resistant: ['grass', 'ground', 'fighting'],
+            resistant: ['Grass', 'Ground', 'Fighting'],
             superResistant: [],
             immune: []
         },
@@ -910,7 +910,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Tackle',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -920,7 +920,7 @@ const pokemonData = {
     },
     'Kakuna': {
         name: 'Kakuna',
-        type: ['bug', 'poison'],
+        type: ['Bug', 'Poison'],
         level: 2,
         evolution: 'Beedrill',
         stats: {
@@ -934,11 +934,11 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'steel', 'ice', 'water', 'electric', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'rock', 'flying', 'psychic'],
+            normal: ['Normal', 'Ground', 'Steel', 'Ice', 'Water', 'Electric', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Rock', 'Flying', 'Psychic'],
             superWeak: [],
-            resistant: ['poison', 'bug', 'fairy'],
-            superResistant: ['fighting', 'grass'],
+            resistant: ['Poison', 'Bug', 'Fairy'],
+            superResistant: ['Fighting', 'Grass'],
             immune: []
         },
         image: {
@@ -948,7 +948,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Poison Sting',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Physical',
                 power: 15,
                 accuracy: 100,
@@ -958,7 +958,7 @@ const pokemonData = {
     },
     'Pidgeotto': {
         name: 'Pidgeotto',
-        type: ['normal', 'flying'],
+        type: ['Normal', 'Flying'],
         level: 2,
         evolution: 'Pidgeot',
         stats: {
@@ -972,12 +972,12 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'flying', 'fighting', 'poison', 'steel', 'psychic', 'water', 'dragon', 'dark', 'fairy'],
-            weak: ['rock', 'electric', 'ice'],
+            normal: ['Normal', 'Fire', 'Flying', 'Fighting', 'Poison', 'Steel', 'Psychic', 'Water', 'Dragon', 'Dark', 'Fairy'],
+            weak: ['Rock', 'Electric', 'Ice'],
             superWeak: [],
-            resistant: ['bug', 'grass'],
+            resistant: ['Bug', 'Grass'],
             superResistant: [],
-            immune: ['ground', 'ghost']
+            immune: ['Ground', 'Ghost']
         },
         image: {
             front: 'image/Pidgeotto_Front.png',
@@ -986,7 +986,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Wing Attack',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -994,7 +994,7 @@ const pokemonData = {
             },
             {
                 name: 'Twister',
-                type: 'dragon',
+                type: 'Dragon',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -1005,7 +1005,7 @@ const pokemonData = {
     // New Pokemon - Level 2 Evolutions
     'Dragonair': {
         name: 'Dragonair',
-        type: 'dragon',
+        type: 'Dragon',
         level: 2,
         evolution: 'Dragonite',
         stats: {
@@ -1019,10 +1019,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['flying', 'normal', 'fighting', 'ground', 'bug', 'poison', 'dark', 'psychic', 'ghost', 'steel', 'rock'],
-            weak: ['dragon', 'fairy', 'ice'],
+            normal: ['Flying', 'Normal', 'Fighting', 'Ground', 'Bug', 'Poison', 'Dark', 'Psychic', 'Ghost', 'Steel', 'Rock'],
+            weak: ['Dragon', 'Fairy', 'Ice'],
             superWeak: [],
-            resistant: ['fire', 'electric', 'water', 'grass'],
+            resistant: ['Fire', 'Electric', 'Water', 'Grass'],
             superResistant: [],
             immune: []
         },
@@ -1033,7 +1033,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Dragon Tail',
-                type: 'dragon',
+                type: 'Dragon',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 90,
@@ -1041,7 +1041,7 @@ const pokemonData = {
             },
             {
                 name: 'Aqua Tail',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Physical',
                 power: 90,
                 accuracy: 90,
@@ -1051,7 +1051,7 @@ const pokemonData = {
     },
     'Haunter': {
         name: 'Haunter',
-        type: ['ghost', 'poison'],
+        type: ['Ghost', 'Poison'],
         level: 2,
         evolution: 'Gengar',
         stats: {
@@ -1065,12 +1065,12 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: [ 'fire', 'flying', 'steel', 'water', 'dragon', 'rock', 'electric', 'ice'],
-            weak: ['dark', 'psychic', 'ghost'],
+            normal: [ 'Fire', 'Flying', 'Steel', 'Water', 'Dragon', 'Rock', 'Electric', 'Ice'],
+            weak: ['Dark', 'Psychic', 'Ghost'],
             superWeak: [],
-            resistant: ['fairy', 'grass'],
-            superResistant: ['bug', 'poison'],
-            immune: ['normal', 'fighting', 'ground']
+            resistant: ['Fairy', 'Grass'],
+            superResistant: ['Bug', 'Poison'],
+            immune: ['Normal', 'Fighting', 'Ground']
         },
         image: {
             front: 'image/Haunter_Front.png',
@@ -1079,7 +1079,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Sucker Punch',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -1087,7 +1087,7 @@ const pokemonData = {
             },
             {
                 name: 'Shadow Ball',
-                type: 'ghost',
+                type: 'Ghost',
                 damage_category: 'Special',
                 power: 80,
                 accuracy: 100,
@@ -1097,7 +1097,7 @@ const pokemonData = {
     },
     'Graveler': {
         name: 'Graveler',
-        type: ['rock', 'ground'],
+        type: ['Rock', 'Ground'],
         level: 2,
         evolution: 'Golem',
         stats: {
@@ -1111,12 +1111,12 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['fairy', 'bug', 'ghost', 'psychic', 'dragon', 'dark'],
-            weak: ['ground', 'fighting', 'steel', 'ice'],
-            superWeak: ['grass', 'water'],
-            resistant: ['normal', 'flying', 'fire', 'rock'],
-            superResistant: ['poison'],
-            immune: ['electric']
+            normal: ['Fairy', 'Bug', 'Ghost', 'Psychic', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Fighting', 'Steel', 'Ice'],
+            superWeak: ['Grass', 'Water'],
+            resistant: ['Normal', 'Flying', 'Fire', 'Rock'],
+            superResistant: ['Poison'],
+            immune: ['Electric']
         },
         image: {
             front: 'image/Graveler_Front.png',
@@ -1125,7 +1125,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Smack Down',
-                type: 'rock',
+                type: 'Rock',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 100,
@@ -1133,7 +1133,7 @@ const pokemonData = {
             },
             {
                 name: 'Bulldoze',
-                type: 'ground',
+                type: 'Ground',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -1143,7 +1143,7 @@ const pokemonData = {
     },
     'Weepinbell': {
         name: 'Weepinbell',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 2,
         evolution: 'Victreebel',
         stats: {
@@ -1157,11 +1157,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -1171,7 +1171,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Acid',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -1179,7 +1179,7 @@ const pokemonData = {
             },
             {
                 name: 'Knock Off',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 20,
                 accuracy: 100,
@@ -1189,7 +1189,7 @@ const pokemonData = {
     },
     'Machoke': {
         name: 'Machoke',
-        type: 'fighting',
+        type: 'Fighting',
         level: 2,
         evolution: 'Machamp',
         stats: {
@@ -1203,10 +1203,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'ghost', 'water', 'fighting', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'poison', 'dragon'],
-            weak: ['psychic', 'fairy', 'flying'],
+            normal: ['Normal', 'Ghost', 'Water', 'Fighting', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Poison', 'Dragon'],
+            weak: ['Psychic', 'Fairy', 'Flying'],
             superWeak: [],
-            resistant: ['rock', 'bug', 'dark'],
+            resistant: ['Rock', 'Bug', 'Dark'],
             superResistant: [],
             immune: []
         },
@@ -1217,7 +1217,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Revenge',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -1225,7 +1225,7 @@ const pokemonData = {
             },
             {
                 name: 'Submission',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 80,
@@ -1235,7 +1235,7 @@ const pokemonData = {
     },
     'Kadabra': {
         name: 'Kadabra',
-        type: 'psychic',
+        type: 'Psychic',
         level: 2,
         evolution: 'Alakazam',
         stats: {
@@ -1249,10 +1249,10 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'fairy', 'flying', 'water', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'rock', 'poison', 'dragon'],
-            weak: ['bug', 'ghost', 'dark'],
+            normal: ['Normal', 'Fairy', 'Flying', 'Water', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Rock', 'Poison', 'Dragon'],
+            weak: ['Bug', 'Ghost', 'Dark'],
             superWeak: [],
-            resistant: ['psychic', 'fighting'],
+            resistant: ['Psychic', 'Fighting'],
             superResistant: [],
             immune: []
         },
@@ -1263,7 +1263,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Confusion',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 50,
                 accuracy: 100,
@@ -1271,7 +1271,7 @@ const pokemonData = {
             },
             {
                 name: 'Psybeam',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 65,
                 accuracy: 100,
@@ -1281,7 +1281,7 @@ const pokemonData = {
     },
     'Poliwhirl': {
         name: 'Poliwhirl',
-        type: 'water',
+        type: 'Water',
         level: 2,
         evolution: 'Poliwrath',
         stats: {
@@ -1295,10 +1295,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fairy', 'flying', 'psychic', 'fighting', 'ground', 'rock', 'bug', 'ghost', 'poison', 'dragon', 'dark'],
-            weak: ['electric', 'grass'],
+            normal: ['Normal', 'Fairy', 'Flying', 'Psychic', 'Fighting', 'Ground', 'Rock', 'Bug', 'Ghost', 'Poison', 'Dragon', 'Dark'],
+            weak: ['Electric', 'Grass'],
             superWeak: [],
-            resistant: ['water', 'ice', 'steel', 'fire'],
+            resistant: ['Water', 'Ice', 'Steel', 'Fire'],
             superResistant: [],
             immune: []
         },
@@ -1309,7 +1309,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Body Slam',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 85,
                 accuracy: 100,
@@ -1317,7 +1317,7 @@ const pokemonData = {
             },
             {
                 name: 'BubbleBeam',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 65,
                 accuracy: 100,
@@ -1327,7 +1327,7 @@ const pokemonData = {
     },
     'Gloom': {
         name: 'Gloom',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 2,
         evolution: 'Vileplume',
         stats: {
@@ -1341,11 +1341,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
-            weak: ['fire', 'flying', 'ice', 'psychic'],
+            normal: ['Normal', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Poison', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Flying', 'Ice', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -1355,7 +1355,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Mega Drain',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Special',
                 power: 40,
                 accuracy: 100,
@@ -1363,7 +1363,7 @@ const pokemonData = {
             },
             {
                 name: 'Venoshock',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Special',
                 power: 65,
                 accuracy: 100,
@@ -1373,7 +1373,7 @@ const pokemonData = {
     },
     'Nidorino': {
         name: 'Nidorino',
-        type: 'poison',
+        type: 'Poison',
         level: 2,
         evolution: 'Nidoking',
         stats: {
@@ -1387,10 +1387,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
-            weak: ['ground', 'psychic'],
+            normal: ['Normal', 'Fire', 'Rock', 'Electric', 'Ghost', 'Flying', 'Steel', 'Ice', 'Water', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            resistant: ['Fighting', 'Poison', 'Bug', 'Grass', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -1401,7 +1401,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Horn Attack',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 65,
                 accuracy: 100,
@@ -1409,7 +1409,7 @@ const pokemonData = {
             },
             {
                 name: 'Cut',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 95,
@@ -1419,7 +1419,7 @@ const pokemonData = {
     },
     'Nidorina': {
         name: 'Nidorina',
-        type: 'poison',
+        type: 'Poison',
         level: 2,
         evolution: 'Nidoqueen',
         stats: {
@@ -1433,10 +1433,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'rock', 'electric', 'ghost', 'flying', 'steel', 'ice', 'water', 'dragon', 'dark'],
-            weak: ['ground', 'psychic'],
+            normal: ['Normal', 'Fire', 'Rock', 'Electric', 'Ghost', 'Flying', 'Steel', 'Ice', 'Water', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'poison', 'bug', 'grass', 'fairy'],
+            resistant: ['Fighting', 'Poison', 'Bug', 'Grass', 'Fairy'],
             superResistant: [],
             immune: []
         },
@@ -1447,7 +1447,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Bite',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -1455,7 +1455,7 @@ const pokemonData = {
             },
             {
                 name: 'Cut',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 50,
                 accuracy: 95,
@@ -1467,7 +1467,7 @@ const pokemonData = {
     // Level 3 Evolutions
     'Venusaur': {
         name: 'Venusaur',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 3,
         stats: {
             health: 275.5,
@@ -1480,11 +1480,11 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -1494,7 +1494,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Double-Edge',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 100,
@@ -1502,7 +1502,7 @@ const pokemonData = {
             },
             {
                 name: 'Petal Dance',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Special',
                 power: 120,
                 accuracy: 100,
@@ -1512,7 +1512,7 @@ const pokemonData = {
     },
     'Charizard': {
         name: 'Charizard',
-        type: ['fire', 'flying'],
+        type: ['Fire', 'Flying'],
         level: 3,
         stats: {
             health: 272.5,
@@ -1525,11 +1525,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'flying', 'psychic', 'ice', 'ground', 'ghost', 'dragon', 'dark'],
-            weak: ['water', 'electric'],
-            superWeak: ['rock'],
-            resistant: ['fire', 'steel', 'fighting', 'fairy'],
-            superResistant: ['grass', 'bug'],
+            normal: ['Normal', 'Poison', 'Flying', 'Psychic', 'Ice', 'Ground', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Water', 'Electric'],
+            superWeak: ['Rock'],
+            resistant: ['Fire', 'Steel', 'Fighting', 'Fairy'],
+            superResistant: ['Grass', 'Bug'],
             immune: []
         },
         image: {
@@ -1539,7 +1539,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Flamethrower',
-                type: 'fire',
+                type: 'Fire',
                 damage_category: 'Special',
                 power: 95,
                 accuracy: 100,
@@ -1547,7 +1547,7 @@ const pokemonData = {
             },
             {
                 name: 'Heat Wave',
-                type: 'fire',
+                type: 'Fire',
                 damage_category: 'Special',
                 power: 100,
                 accuracy: 90,
@@ -1557,7 +1557,7 @@ const pokemonData = {
     },
     'Blastoise': {
         name: 'Blastoise',
-        type: 'water',
+        type: 'Water',
         level: 3,
         stats: {
             health: 274,
@@ -1570,10 +1570,10 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'bug', 'ground', 'rock', 'poison', 'psychic', 'fairy', 'flying', 'ghost', 'dragon', 'dark', 'fighting'],
-            weak: ['grass', 'electric'],
+            normal: ['Normal', 'Bug', 'Ground', 'Rock', 'Poison', 'Psychic', 'Fairy', 'Flying', 'Ghost', 'Dragon', 'Dark', 'Fighting'],
+            weak: ['Grass', 'Electric'],
             superWeak: [],
-            resistant: ['steel', 'fire', 'ice', 'water'],
+            resistant: ['Steel', 'Fire', 'Ice', 'Water'],
             superResistant: [],
             immune: []
         },
@@ -1584,7 +1584,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Aqua Tail',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Physical',
                 power: 90,
                 accuracy: 90,
@@ -1592,7 +1592,7 @@ const pokemonData = {
             },
             {
                 name: 'Hydro Pump',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Special',
                 power: 120,
                 accuracy: 80,
@@ -1602,7 +1602,7 @@ const pokemonData = {
     },
     'Butterfree': {
         name: 'Butterfree',
-        type: ['bug', 'flying'],
+        type: ['Bug', 'Flying'],
         level: 3,
         stats: {
             health: 245.5,
@@ -1615,12 +1615,12 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'steel', 'water', 'poison', 'psychic', 'fairy', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'flying', 'ice', 'electric'],
-            superWeak: ['rock'],
-            resistant: ['bug'],
-            superResistant: ['grass', 'fighting'],
-            immune: ['ground']
+            normal: ['Normal', 'Steel', 'Water', 'Poison', 'Psychic', 'Fairy', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Flying', 'Ice', 'Electric'],
+            superWeak: ['Rock'],
+            resistant: ['Bug'],
+            superResistant: ['Grass', 'Fighting'],
+            immune: ['Ground']
         },
         image: {
             front: 'image/Butterfree_Front.png',
@@ -1629,7 +1629,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Psybeam',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 65,
                 accuracy: 100,
@@ -1637,7 +1637,7 @@ const pokemonData = {
             },
             {
                 name: 'Bug Buzz',
-                type: 'bug',
+                type: 'Bug',
                 damage_category: 'Special',
                 power: 90,
                 accuracy: 100,
@@ -1647,7 +1647,7 @@ const pokemonData = {
     },
     'Beedrill': {
         name: 'Beedrill',
-        type: ['bug', 'poison'],
+        type: ['Bug', 'Poison'],
         level: 3,
         stats: {
             health: 253,
@@ -1660,11 +1660,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'steel', 'ice', 'water', 'electric', 'ghost', 'dragon', 'dark'],
-            weak: ['fire', 'rock', 'flying', 'psychic'],
+            normal: ['Normal', 'Ground', 'Steel', 'Ice', 'Water', 'Electric', 'Ghost', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Rock', 'Flying', 'Psychic'],
             superWeak: [],
-            resistant: ['poison', 'bug', 'fairy'],
-            superResistant: ['fighting', 'grass'],
+            resistant: ['Poison', 'Bug', 'Fairy'],
+            superResistant: ['Fighting', 'Grass'],
             immune: []
         },
         image: {
@@ -1674,7 +1674,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'X-Scissor',
-                type: 'bug',
+                type: 'Bug',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -1682,7 +1682,7 @@ const pokemonData = {
             },
             {
                 name: 'Poison Jab',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -1692,7 +1692,7 @@ const pokemonData = {
     },
     'Pidgeot': {
         name: 'Pidgeot',
-        type: ['normal', 'flying'],
+        type: ['Normal', 'Flying'],
         level: 3,
         stats: {
             health: 280,
@@ -1705,12 +1705,12 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'flying', 'fighting', 'poison', 'steel', 'psychic', 'water', 'dragon', 'dark', 'fairy'],
-            weak: ['rock', 'electric', 'ice'],
+            normal: ['Normal', 'Fire', 'Flying', 'Fighting', 'Poison', 'Steel', 'Psychic', 'Water', 'Dragon', 'Dark', 'Fairy'],
+            weak: ['Rock', 'Electric', 'Ice'],
             superWeak: [],
-            resistant: ['bug', 'grass'],
+            resistant: ['Bug', 'Grass'],
             superResistant: [],
-            immune: ['ground', 'ghost']
+            immune: ['Ground', 'Ghost']
         },
         image: {
             front: 'image/Pidgeot_Front.png',
@@ -1719,7 +1719,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Fly',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Physical',
                 power: 90,
                 accuracy: 95,
@@ -1727,7 +1727,7 @@ const pokemonData = {
             },
             {
                 name: 'Hurricane',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Special',
                 power: 120,
                 accuracy: 70,
@@ -1738,7 +1738,7 @@ const pokemonData = {
     // New Pokemon - Level 3 Evolutions
     'Dragonite': {
         name: 'Dragonite',
-        type: ['dragon', 'flying'],
+        type: ['Dragon', 'Flying'],
         level: 3,
         stats: {
             health: 292,
@@ -1751,11 +1751,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['flying', 'electric', 'normal', 'ground', 'poison', 'dark', 'psychic', 'ghost', 'steel'],
-            weak: ['dragon', 'fairy', 'rock'],
-            superWeak: ['ice'],
-            resistant: ['fire', 'fighting', 'bug', 'water'],
-            superResistant: ['grass'],
+            normal: ['Flying', 'Electric', 'Normal', 'Ground', 'Poison', 'Dark', 'Psychic', 'Ghost', 'Steel'],
+            weak: ['Dragon', 'Fairy', 'Rock'],
+            superWeak: ['Ice'],
+            resistant: ['Fire', 'Fighting', 'Bug', 'Water'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -1765,7 +1765,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Wing Attack',
-                type: 'flying',
+                type: 'Flying',
                 damage_category: 'Physical',
                 power: 60,
                 accuracy: 100,
@@ -1773,7 +1773,7 @@ const pokemonData = {
             },
             {
                 name: 'Outrage',
-                type: 'dragon',
+                type: 'Dragon',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 100,
@@ -1783,7 +1783,7 @@ const pokemonData = {
     },
     'Gengar': {
         name: 'Gengar',
-        type: ['ghost', 'poison'],
+        type: ['Ghost', 'Poison'],
         level: 3,
         stats: {
             health: 245.5,
@@ -1796,12 +1796,12 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: [ 'fire', 'flying', 'steel', 'water', 'dragon', 'rock', 'electric', 'ice'],
-            weak: ['ground', 'dark', 'psychic', 'ghost'],
+            normal: [ 'Fire', 'Flying', 'Steel', 'Water', 'Dragon', 'Rock', 'Electric', 'Ice'],
+            weak: ['Ground', 'Dark', 'Psychic', 'Ghost'],
             superWeak: [],
-            resistant: ['fairy', 'grass'],
-            superResistant: ['bug', 'poison'],
-            immune: ['normal', 'fighting']
+            resistant: ['Fairy', 'Grass'],
+            superResistant: ['Bug', 'Poison'],
+            immune: ['Normal', 'Fighting']
         },
         image: {
             front: 'image/Gengar_Front.png',
@@ -1810,7 +1810,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Dream Eater',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 100,
                 accuracy: 100,
@@ -1818,7 +1818,7 @@ const pokemonData = {
             },
             {
                 name: 'Dark Pulse',
-                type: 'dark',
+                type: 'Dark',
                 damage_category: 'Special',
                 power: 80,
                 accuracy: 100,
@@ -1828,7 +1828,7 @@ const pokemonData = {
     },
     'Golem': {
         name: 'Golem',
-        type: ['rock', 'ground'],
+        type: ['Rock', 'Ground'],
         level: 3,
         stats: {
             health: 275.5,
@@ -1841,12 +1841,12 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['fairy', 'bug', 'ghost', 'psychic', 'dragon', 'dark'],
-            weak: ['ground', 'fighting', 'steel', 'ice'],
-            superWeak: ['grass', 'water'],
-            resistant: ['normal', 'flying', 'fire', 'rock'],
-            superResistant: ['poison'],
-            immune: ['electric']
+            normal: ['Fairy', 'Bug', 'Ghost', 'Psychic', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Fighting', 'Steel', 'Ice'],
+            superWeak: ['Grass', 'Water'],
+            resistant: ['Normal', 'Flying', 'Fire', 'Rock'],
+            superResistant: ['Poison'],
+            immune: ['Electric']
         },
         image: {
             front: 'image/Golem_Front.png',
@@ -1855,7 +1855,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Earthquake',
-                type: 'ground',
+                type: 'Ground',
                 damage_category: 'Physical',
                 power: 100,
                 accuracy: 100,
@@ -1863,7 +1863,7 @@ const pokemonData = {
             },
             {
                 name: 'Double-Edge',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 100,
@@ -1873,7 +1873,7 @@ const pokemonData = {
     },
     'Victreebel': {
         name: 'Victreebel',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 3,
         stats: {
             health: 275.5,
@@ -1886,11 +1886,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'poison', 'ground', 'rock', 'bug', 'ghost', 'steel', 'dragon', 'dark'],
-            weak: ['flying', 'fire', 'psychic', 'ice'],
+            normal: ['Normal', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Flying', 'Fire', 'Psychic', 'Ice'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -1900,7 +1900,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Leaf Storm',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Special',
                 power: 140,
                 accuracy: 90,
@@ -1908,7 +1908,7 @@ const pokemonData = {
             },
             {
                 name: 'Leaf Blade',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Physical',
                 power: 90,
                 accuracy: 100,
@@ -1918,7 +1918,7 @@ const pokemonData = {
     },
     'Machamp': {
         name: 'Machamp',
-        type: 'fighting',
+        type: 'Fighting',
         level: 3,
         stats: {
             health: 290.5,
@@ -1931,10 +1931,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'ghost', 'water', 'fighting', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'poison', 'dragon'],
-            weak: ['psychic', 'fairy', 'flying'],
+            normal: ['Normal', 'Ghost', 'Water', 'Fighting', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Poison', 'Dragon'],
+            weak: ['Psychic', 'Fairy', 'Flying'],
             superWeak: [],
-            resistant: ['rock', 'bug', 'dark'],
+            resistant: ['Rock', 'Bug', 'Dark'],
             superResistant: [],
             immune: []
         },
@@ -1945,7 +1945,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Strength',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -1953,7 +1953,7 @@ const pokemonData = {
             },
             {
                 name: 'Cross Chop',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 100,
                 accuracy: 80,
@@ -1963,7 +1963,7 @@ const pokemonData = {
     },
     'Alakazam': {
         name: 'Alakazam',
-        type: 'psychic',
+        type: 'Psychic',
         level: 3,
         stats: {
             health: 238,
@@ -1976,10 +1976,10 @@ const pokemonData = {
             range: 3
         },
         typeEffectiveness: {
-            normal: ['normal', 'fairy', 'flying', 'water', 'ice', 'steel', 'fire', 'electric', 'grass', 'ground', 'rock', 'poison', 'dragon'],
-            weak: ['bug', 'ghost', 'dark'],
+            normal: ['Normal', 'Fairy', 'Flying', 'Water', 'Ice', 'Steel', 'Fire', 'Electric', 'Grass', 'Ground', 'Rock', 'Poison', 'Dragon'],
+            weak: ['Bug', 'Ghost', 'Dark'],
             superWeak: [],
-            resistant: ['psychic', 'fighting'],
+            resistant: ['Psychic', 'Fighting'],
             superResistant: [],
             immune: []
         },
@@ -1990,7 +1990,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Psychic',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 90,
                 accuracy: 100,
@@ -1998,7 +1998,7 @@ const pokemonData = {
             },
             {
                 name: 'Future Sight',
-                type: 'psychic',
+                type: 'Psychic',
                 damage_category: 'Special',
                 power: 100,
                 accuracy: 100,
@@ -2008,7 +2008,7 @@ const pokemonData = {
     },
     'Poliwrath': {
         name: 'Poliwrath',
-        type: ['water', 'fighting'],
+        type: ['Water', 'Fighting'],
         level: 3,
         stats: {
             health: 290.5,
@@ -2021,10 +2021,10 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fighting', 'ground', 'ghost', 'poison', 'dragon'],
-            weak: ['fairy', 'flying', 'psychic', 'electric', 'grass'],
+            normal: ['Normal', 'Fighting', 'Ground', 'Ghost', 'Poison', 'Dragon'],
+            weak: ['Fairy', 'Flying', 'Psychic', 'Electric', 'Grass'],
             superWeak: [],
-            resistant: ['rock', 'bug', 'water', 'ice', 'steel', 'fire', 'dark'],
+            resistant: ['Rock', 'Bug', 'Water', 'Ice', 'Steel', 'Fire', 'Dark'],
             superResistant: [],
             immune: []
         },
@@ -2035,7 +2035,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Waterfall',
-                type: 'water',
+                type: 'Water',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 100,
@@ -2043,7 +2043,7 @@ const pokemonData = {
             },
             {
                 name: 'Submission',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 80,
                 accuracy: 80,
@@ -2053,7 +2053,7 @@ const pokemonData = {
     },
     'Vileplume': {
         name: 'Vileplume',
-        type: ['grass', 'poison'],
+        type: ['Grass', 'Poison'],
         level: 3,
         stats: {
             health: 268,
@@ -2066,11 +2066,11 @@ const pokemonData = {
             range: 2
         },
         typeEffectiveness: {
-            normal: ['normal', 'ground', 'rock', 'bug', 'ghost', 'steel', 'poison', 'dragon', 'dark'],
-            weak: ['fire', 'flying', 'ice', 'psychic'],
+            normal: ['Normal', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Poison', 'Dragon', 'Dark'],
+            weak: ['Fire', 'Flying', 'Ice', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'water', 'electric', 'fairy'],
-            superResistant: ['grass'],
+            resistant: ['Fighting', 'Water', 'Electric', 'Fairy'],
+            superResistant: ['Grass'],
             immune: []
         },
         image: {
@@ -2080,7 +2080,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Petal Dance',
-                type: 'grass',
+                type: 'Grass',
                 damage_category: 'Special',
                 power: 120,
                 accuracy: 100,
@@ -2088,7 +2088,7 @@ const pokemonData = {
             },
             {
                 name: 'Sludge Bomb',
-                type: 'poison',
+                type: 'Poison',
                 damage_category: 'Special',
                 power: 90,
                 accuracy: 100,
@@ -2098,7 +2098,7 @@ const pokemonData = {
     },
     'Nidoking': {
         name: 'Nidoking',
-        type: ['poison', 'ground'],
+        type: ['Poison', 'Ground'],
         level: 3,
         stats: {
             health: 277,
@@ -2111,12 +2111,12 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'grass', 'ghost', 'flying', 'steel', 'dragon', 'dark'],
-            weak: ['ground', 'water', 'ice', 'psychic'],
+            normal: ['Normal', 'Fire', 'Grass', 'Ghost', 'Flying', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Water', 'Ice', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'bug', 'rock', 'fairy'],
-            superResistant: ['poison'],
-            immune: ['electric']
+            resistant: ['Fighting', 'Bug', 'Rock', 'Fairy'],
+            superResistant: ['Poison'],
+            immune: ['Electric']
         },
         image: {
             front: 'image/Nidoking_Front.png',
@@ -2125,7 +2125,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Thrash',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 100,
@@ -2133,7 +2133,7 @@ const pokemonData = {
             },
             {
                 name: 'Megahorn',
-                type: 'bug',
+                type: 'Bug',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 85,
@@ -2143,7 +2143,7 @@ const pokemonData = {
     },
     'Nidoqueen': {
         name: 'Nidoqueen',
-        type: ['poison', 'ground'],
+        type: ['Poison', 'Ground'],
         level: 3,
         stats: {
             health: 290.5,
@@ -2156,12 +2156,12 @@ const pokemonData = {
             range: 1
         },
         typeEffectiveness: {
-            normal: ['normal', 'fire', 'grass', 'ghost', 'flying', 'steel', 'dragon', 'dark'],
-            weak: ['ground', 'water', 'ice', 'psychic'],
+            normal: ['Normal', 'Fire', 'Grass', 'Ghost', 'Flying', 'Steel', 'Dragon', 'Dark'],
+            weak: ['Ground', 'Water', 'Ice', 'Psychic'],
             superWeak: [],
-            resistant: ['fighting', 'bug', 'rock', 'fairy'],
-            superResistant: ['poison'],
-            immune: ['electric']
+            resistant: ['Fighting', 'Bug', 'Rock', 'Fairy'],
+            superResistant: ['Poison'],
+            immune: ['Electric']
         },
         image: {
             front: 'image/Nidoqueen_Front.png',
@@ -2170,7 +2170,7 @@ const pokemonData = {
         moves: [
             {
                 name: 'Body Slam',
-                type: 'normal',
+                type: 'Normal',
                 damage_category: 'Physical',
                 power: 85,
                 accuracy: 100,
@@ -2178,7 +2178,7 @@ const pokemonData = {
             },
             {
                 name: 'Superpower',
-                type: 'fighting',
+                type: 'Fighting',
                 damage_category: 'Physical',
                 power: 120,
                 accuracy: 100,

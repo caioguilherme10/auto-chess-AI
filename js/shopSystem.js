@@ -35,11 +35,14 @@ function renderShop() {
             const pokemon = gameState.shop[index];
             const pokemonElement = createPokemonElement(pokemon);
             
-            // Add cost indicator
+            // Add cost indicator with color coding
             const costElement = document.createElement('div');
             costElement.className = 'pokemon-cost';
             costElement.textContent = pokemon.cost;
             pokemonElement.appendChild(costElement);
+            
+            // Add data-cost attribute for CSS styling
+            pokemonElement.setAttribute('data-cost', pokemon.cost);
             
             slot.appendChild(pokemonElement);
         }

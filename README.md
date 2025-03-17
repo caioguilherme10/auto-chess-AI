@@ -40,7 +40,10 @@ Pokémon Auto Chess is a strategic auto-battler game featuring Pokémon characte
 
 - **Starting Gold**: Players begin with 10 gold
 - **Gold Usage**:
-  - Buy Pokémon from the shop (cost varies by Pokémon)
+  - Buy Pokémon from the shop (costs vary by Pokémon tier)
+    - Green tier: 1 gold (weaker Pokémon)
+    - Blue tier: 2 gold (average Pokémon)
+    - Purple tier: 3 gold (stronger Pokémon)
   - Refresh the shop (2 gold)
   - Buy EXP to level up (4 gold)
 - **Gold Income**: Earn gold by winning battles (5 gold + player level)

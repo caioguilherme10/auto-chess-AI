@@ -135,7 +135,16 @@ function setupDragAndDrop() {
         
         const cell = e.target.closest('.cell');
         if (cell) {
-            const [targetRow, targetCol] = cell.dataset.position.split('-').map(Number);
+            const position = cell.dataset.position;
+            if (!position) return; // Ensure position data exists
+            
+            const [targetRow, targetCol] = position.split('-').map(Number);
+            
+            // Validate row and column are within bounds
+            if (targetRow < 0 || targetRow >= gameState.board.length || 
+                targetCol < 0 || targetCol >= gameState.board[0].length) {
+                return;
+            }
             
             // Check if the target cell is in the player area (rows 3, 4, and 5)
             const isPlayerArea = targetRow >= 3 && targetRow <= 5;
@@ -173,6 +182,12 @@ function setupDragAndDrop() {
             // If dragging from board to board
             else if (gameState.dragSource.type === 'board') {
                 const [sourceRow, sourceCol] = gameState.dragSource.position;
+                
+                // Validate source position is within bounds
+                if (sourceRow < 0 || sourceRow >= gameState.board.length || 
+                    sourceCol < 0 || sourceCol >= gameState.board[0].length) {
+                    return;
+                }
                 
                 // Only allow movement within player area
                 if (sourceRow >= 3 && sourceRow <= 5) {
