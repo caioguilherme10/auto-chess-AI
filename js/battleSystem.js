@@ -73,15 +73,92 @@ function startBattle() {
 function generateEnemyBoard() {
     gameState.enemyBoard = [];
     
-    // Number of enemy units based on player level and stage
-    const stageBonus = Math.floor(gameState.stage / 2);
-    const enemyUnitCount = Math.min(gameState.level + stageBonus + 2, 8);
+    let enemyUnitCount;
+    let maxEnemyCost;
     
-    // Possible Pokemon types for enemies - scale with stage
-    const maxEnemyLevel = Math.ceil(gameState.level / 3) + Math.floor(gameState.stage / 2);
+    // Special scaling for stage 1
+    if (gameState.stage === 1) {
+        // For stage 1: round 1 = 1 unit, round 2 = 2 units, round 3 = 3 units
+        enemyUnitCount = gameState.round;
+        // For stage 1: round 1 = cost 1, round 2 = cost 1-2, round 3 = cost 1-3
+        maxEnemyCost = gameState.round;
+    } else {
+        // For other stages, scale based on stage and round
+        const stageBonus = Math.floor(gameState.stage / 2);
+        enemyUnitCount = Math.min(gameState.stage + gameState.round, 8);
+        maxEnemyCost = Math.min(gameState.stage, 5); // Max cost is 5
+    }
+    
+    // Possible Pokemon types for enemies - scale with stage and round
+    // For stages 1-2, only level 1 Pokemon
+    // For stage 3+, allow higher level Pokemon based on stage
+    let maxEnemyLevel = 1;
+    if (gameState.stage >= 3) {
+        maxEnemyLevel = Math.min(gameState.stage - 1, 3); // Max level is 3
+    }
+    
+    // Filter Pokemon by cost and level
     const possibleEnemies = Object.keys(pokemonData).filter(name => {
-        return pokemonData[name].level <= maxEnemyLevel;
+        const pokemon = pokemonData[name];
+        // For stage 3+, ensure we include some higher level Pokemon
+        if (gameState.stage >= 3) {
+            // Include Pokemon of the appropriate level for the stage
+            // For stage 3, include level 1-2 Pokemon
+            // For stage 4+, include level 1-3 Pokemon
+            return pokemon.level <= maxEnemyLevel && 
+                   (pokemon.cost ? pokemon.cost <= maxEnemyCost : true) &&
+                   (gameState.stage === 1 ? pokemon.cost >= 1 : true);
+        } else {
+            // For stages 1-2, only include level 1 Pokemon
+            return pokemon.level === 1 && 
+                   pokemon.cost <= maxEnemyCost &&
+                   (gameState.stage === 1 ? pokemon.cost >= 1 : true);
+        }
     });
+    
+    // Ensure we have at least some higher level Pokemon for higher stages
+    if (gameState.stage >= 3 && maxEnemyLevel > 1) {
+        // Get Pokemon of each allowed level for this stage (level 2 and 3)
+        for (let level = 2; level <= maxEnemyLevel; level++) {
+            const highLevelPokemon = Object.keys(pokemonData).filter(name => {
+                const pokemon = pokemonData[name];
+                // Use a default cost for evolved Pokemon if not defined
+                // This ensures they're not filtered out by the cost check
+                return pokemon.level === level && (pokemon.cost ? pokemon.cost <= maxEnemyCost : true);
+            });
+            
+            // If we have high level Pokemon available, ensure they're included
+            if (highLevelPokemon.length > 0) {
+                // Add at least one Pokemon of each level to the enemy pool
+                const randomHighLevel = highLevelPokemon[Math.floor(Math.random() * highLevelPokemon.length)];
+                if (!possibleEnemies.includes(randomHighLevel)) {
+                    possibleEnemies.push(randomHighLevel);
+                }
+                
+                // For higher stages (5+), add more high level Pokemon to increase their chance of appearing
+                if (gameState.stage >= 5 && level === maxEnemyLevel) {
+                    for (let i = 0; i < Math.min(highLevelPokemon.length, 3); i++) {
+                        const additionalPokemon = highLevelPokemon[Math.floor(Math.random() * highLevelPokemon.length)];
+                        if (!possibleEnemies.includes(additionalPokemon)) {
+                            possibleEnemies.push(additionalPokemon);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Debug information about possible enemies
+    console.log('Stage:', gameState.stage, 'Max Enemy Level:', maxEnemyLevel);
+    console.log('Possible enemies count:', possibleEnemies.length);
+    
+    // Count Pokemon by level for debugging
+    const levelCounts = {};
+    possibleEnemies.forEach(name => {
+        const level = pokemonData[name].level;
+        levelCounts[level] = (levelCounts[level] || 0) + 1;
+    });
+    console.log('Pokemon counts by level:', levelCounts);
     
     // Generate random enemy units and distribute them in the enemy area (rows 0-2)
     for (let i = 0; i < enemyUnitCount; i++) {
@@ -404,11 +481,8 @@ function endBattle(playerWon) {
         }
     }
     
-    // Check for victory condition (completed all stages with more than 50 health)
-    if (gameState.stage > 7 && gameState.health > 50) {
-        showVictory();
-        return;
-    }
+    // Victory check is already handled in progressStage() function
+    // No need to check again here
     
     // Reset board to pre-battle state
     renderBoard();
