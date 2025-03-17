@@ -57,15 +57,22 @@ function initGame() {
     // Create stage and round elements if they don't exist
     if (!document.getElementById('stage-amount')) {
         const playerStats = document.querySelector('.player-stats');
+        
+        // Create a container for stage and round info
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'progress-container';
+        
         const stageDiv = document.createElement('div');
         stageDiv.className = 'stage';
         stageDiv.innerHTML = 'Stage: <span id="stage-amount">1</span>';
-        playerStats.appendChild(stageDiv);
+        progressContainer.appendChild(stageDiv);
         
         const roundDiv = document.createElement('div');
         roundDiv.className = 'round';
         roundDiv.innerHTML = 'Round: <span id="round-amount">1</span>/<span id="max-rounds">3</span>';
-        playerStats.appendChild(roundDiv);
+        progressContainer.appendChild(roundDiv);
+        
+        playerStats.appendChild(progressContainer);
     }
     
     stageElement = document.getElementById('stage-amount');
@@ -123,7 +130,7 @@ function resetGame() {
     gameState.battleUnits = [];
     gameState.stage = 1;
     gameState.round = 1;
-    gameState.maxRounds = 3;
+    gameState.maxRounds = 3; // Stage 1 has 3 rounds
     
     // Re-initialize game
     initGame();
@@ -195,13 +202,11 @@ function progressStage() {
         gameState.stage++;
         gameState.round = 1;
         
-        // Increase max rounds for higher stages
-        if (gameState.stage <= 3) {
-            gameState.maxRounds = 3;
-        } else if (gameState.stage <= 5) {
-            gameState.maxRounds = 4;
+        // Set max rounds based on stage
+        if (gameState.stage === 1) {
+            gameState.maxRounds = 3; // Stage 1 has 3 rounds
         } else {
-            gameState.maxRounds = 5;
+            gameState.maxRounds = 6; // All other stages have 6 rounds
         }
         
         // Give stage completion bonus

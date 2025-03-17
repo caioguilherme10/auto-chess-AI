@@ -1,0 +1,40 @@
+.progress-container {
+    display: flex;
+    gap: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.stage, .round {
+    font-weight: bold;
+    color: #333;
+}
+
+#stage-amount, #round-amount, #max-rounds {
+    color: #e91e63;
+    font-size: 1.1em;
+}
+
+.battle-result {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    z-index: 1000;
+    text-align: center;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}

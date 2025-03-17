@@ -396,7 +396,7 @@ function endBattle(playerWon) {
         gameState.health -= damage;
         
         // Show defeat message
-        showBattleResult(`Defeat! You lost ${damage} health. Try again!`);
+        showBattleResult(`Defeat! You lost ${damage} health. Try again! Stage ${gameState.stage}, Round ${gameState.round}/${gameState.maxRounds}`);
         
         // Check game over
         if (gameState.health <= 0) {
