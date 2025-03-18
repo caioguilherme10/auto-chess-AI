@@ -153,7 +153,8 @@ function gameOver() {
         <button id="restart-game">Play Again</button>
     `;
     
-    document.body.appendChild(gameOverElement);
+    // Append to game-container instead of body for proper positioning
+    document.querySelector('.game-container').appendChild(gameOverElement);
     
     // Add restart button functionality
     document.getElementById('restart-game').addEventListener('click', () => {
@@ -169,21 +170,39 @@ function gameOver() {
 
 // Show victory screen when player completes all stages
 function showVictory() {
-    // Show victory message
+    // Create and start confetti animation
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confetti = new Confetti();
+    confetti.start(confettiCanvas);
+    
+    // Play victory sound (using browser's built-in audio API)
+    const victorySound = new Audio('data:audio/wav;base64,//uQRAAAAWMSLwUIYAAsYkXgoQwAEaYLWfkWgAI0wWs/ItAAAGDgYtAgAyN+QWaAAihwMWm4G8QQRDiMcCBcH3Cc+CDv/7xA4Tvh9Rz/y8QADBwMWgQAZG/ILNAARQ4GLTcDeIIIhxGOBAuD7hOfBB3/94gcJ3w+o5/5eIAIAAAVwWgQAVQ2ORaIQwEMAJiDg95G4nQL7mQVWI6GwRcfsZAcsKkJvxgxEjzFUgfHoSQ9Qq7KNwqHwuB13MA4a1q/DmBrHgPcmjiGoh//EwC5nGPEmS4RcfkVKOhJf+WOgoxJclFz3kgn//dBA+ya1GhurNn8zb//9NNutNuhz31f////9vt///z+IdAEAAAK4LQIAKobHItEIYCGAExBwe8jcToF9zIKrEdDYIuP2MgOWFSE34wYiR5iqQPj0JIeoVdlG4VD4XA67mAcNa1fhzA1jwHuTRxDUQ//iYBczjHiTJcIuPyKlHQkv/LHQUYkuSi57yQT//uggfZNajQ3Vm//Lm//GbZuDtj4YeLw3w8y8IBFcG9f9dgobm1vr24Zrb1+Oo5ezLCbCDWfe/0e4Bi18Bb4sDkQvGQeaaY//Z6+//+5Jfbs+OEzzLESvYD5YVDAPPVmvgdYzQsdKRQzUKzmKoGKFTF//Z');
+    victorySound.play();
+    
+    // Calculate game statistics
+    const totalPokemon = countBoardUnits() + gameState.bench.filter(p => p !== null).length;
+    const gameScore = gameState.level * 100 + gameState.health * 5 + totalPokemon * 20;
+    
+    // Show victory message with enhanced styling and more stats
     const victoryElement = document.createElement('div');
     victoryElement.className = 'game-over victory'; // Reuse game-over styling with victory modifier
     victoryElement.innerHTML = `
         <h2>Victory!</h2>
-        <p>Congratulations! You've completed all stages!</p>
-        <p>Final level: ${gameState.level}</p>
-        <p>Remaining health: ${gameState.health}</p>
+        <p>🎉 Congratulations! You've completed all stages! 🎉</p>
+        <p>⭐ Final level: ${gameState.level}</p>
+        <p>❤️ Remaining health: ${gameState.health}</p>
+        <p>🏆 Pokemon collected: ${totalPokemon}</p>
+        <p>🌟 Final score: ${gameScore}</p>
         <button id="restart-game">Play Again</button>
     `;
     
-    document.body.appendChild(victoryElement);
+    // Append to game-container instead of body for proper positioning
+    document.querySelector('.game-container').appendChild(victoryElement);
     
     // Add restart button functionality
     document.getElementById('restart-game').addEventListener('click', () => {
+        // Stop confetti animation
+        confetti.stop();
         victoryElement.remove();
         resetGame();
     });
@@ -192,6 +211,12 @@ function showVictory() {
     startBattleButton.disabled = true;
     refreshShopButton.disabled = true;
     buyExpButton.disabled = true;
+    
+    // Add event listener to stop confetti when window is resized
+    window.addEventListener('resize', () => {
+        confetti.stop();
+        confetti.start(confettiCanvas);
+    });
 }
 
 // Progress to next round or stage
