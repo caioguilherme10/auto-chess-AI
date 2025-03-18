@@ -143,17 +143,19 @@ function resetGame() {
 
 // Game over
 function gameOver() {
-    // Show game over message
+    // Create a game over overlay
     const gameOverElement = document.createElement('div');
-    gameOverElement.className = 'game-over';
+    gameOverElement.className = 'game-over defeat-animation';
     gameOverElement.innerHTML = `
-        <h2>Game Over</h2>
-        <p>You reached level ${gameState.level}</p>
-        <p>You reached stage ${gameState.stage}, round ${gameState.round}</p>
+        <h2>Game Over!</h2>
+        <p>😢 You've been defeated!</p>
+        <p>⭐ Final level: ${gameState.level}</p>
+        <p>🏆 Stage reached: ${gameState.stage}</p>
+        <p>🌟 Final score: ${gameState.level * 100 + countBoardUnits() * 20}</p>
         <button id="restart-game">Play Again</button>
     `;
     
-    // Append to game-container instead of body for proper positioning
+    // Append to game-container for proper positioning
     document.querySelector('.game-container').appendChild(gameOverElement);
     
     // Add restart button functionality
@@ -174,10 +176,6 @@ function showVictory() {
     const confettiCanvas = document.getElementById('confetti-canvas');
     const confetti = new Confetti();
     confetti.start(confettiCanvas);
-    
-    // Play victory sound (using browser's built-in audio API)
-    const victorySound = new Audio('data:audio/wav;base64,//uQRAAAAWMSLwUIYAAsYkXgoQwAEaYLWfkWgAI0wWs/ItAAAGDgYtAgAyN+QWaAAihwMWm4G8QQRDiMcCBcH3Cc+CDv/7xA4Tvh9Rz/y8QADBwMWgQAZG/ILNAARQ4GLTcDeIIIhxGOBAuD7hOfBB3/94gcJ3w+o5/5eIAIAAAVwWgQAVQ2ORaIQwEMAJiDg95G4nQL7mQVWI6GwRcfsZAcsKkJvxgxEjzFUgfHoSQ9Qq7KNwqHwuB13MA4a1q/DmBrHgPcmjiGoh//EwC5nGPEmS4RcfkVKOhJf+WOgoxJclFz3kgn//dBA+ya1GhurNn8zb//9NNutNuhz31f////9vt///z+IdAEAAAK4LQIAKobHItEIYCGAExBwe8jcToF9zIKrEdDYIuP2MgOWFSE34wYiR5iqQPj0JIeoVdlG4VD4XA67mAcNa1fhzA1jwHuTRxDUQ//iYBczjHiTJcIuPyKlHQkv/LHQUYkuSi57yQT//uggfZNajQ3Vm//Lm//GbZuDtj4YeLw3w8y8IBFcG9f9dgobm1vr24Zrb1+Oo5ezLCbCDWfe/0e4Bi18Bb4sDkQvGQeaaY//Z6+//+5Jfbs+OEzzLESvYD5YVDAPPVmvgdYzQsdKRQzUKzmKoGKFTF//Z');
-    victorySound.play();
     
     // Calculate game statistics
     const totalPokemon = countBoardUnits() + gameState.bench.filter(p => p !== null).length;

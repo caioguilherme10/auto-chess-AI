@@ -255,3 +255,9 @@ Critical hits have a base chance of 6.25%, which can increase based on the attac
 6. **Leveling Strategy**:
    - Level up strategically to place more Pokémon on the board
    - Higher levels mean stronger enemies but better rewards
+
+## Bugs
+
+  - Tela de vitoria(quando restarta o game no button da vitoria, o canvas fica travado não terminar de acontecer)
+  - Troca de Montros(quando um montro sai do campo de batalha para o bench para upar para outro nivel o montro que tava no bench some, o bench tem que ta lotado)
+  - os efeitos dos danos dos montros esttão fixo em um lugar, era para estar fixo na pocição do montro e não da tela.
