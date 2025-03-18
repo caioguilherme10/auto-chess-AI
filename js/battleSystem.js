@@ -17,7 +17,8 @@ function checkEvolutions() {
     
     // Check for three identical Pokemon
     for (const [name, pokemons] of Object.entries(pokemonCounts)) {
-        if (pokemons.length >= 3 && pokemonData[name].evolution) {
+        // Skip legendary Pokemon (they don't evolve and have cost of 30)
+        if (pokemons.length >= 3 && pokemonData[name].evolution && pokemonData[name].cost !== 30) {
             // Get the evolution Pokemon
             const evolutionName = pokemonData[name].evolution;
             const evolvedPokemon = { 

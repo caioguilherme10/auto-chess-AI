@@ -7,13 +7,24 @@ function refreshShop() {
     
     // Fill with random Pokemon
     for (let i = 0; i < 5; i++) {
-        const basePokemon = [
-            'Bulbasaur', 'Charmander', 'Squirtle', 'Caterpie', 'Weedle', 'Pidgey',
-            'Dratini', 'Gastly', 'Geodude', 'Bellsprout', 'Machop', 'Abra',
-            'Poliwag', 'Oddish', 'NidoranM', 'NidoranF'
-        ];
-        const randomPokemon = basePokemon[Math.floor(Math.random() * basePokemon.length)];
-        gameState.shop[i] = { ...pokemonData[randomPokemon], id: generateUniqueId() };
+        // Small chance (5%) to get a legendary Pokemon
+        const isLegendary = Math.random() < 0.05;
+        
+        if (isLegendary) {
+            const legendaryPokemon = [
+                'Articuno', 'Zapdos', 'Moltres', 'Mew', 'Mewtwo'
+            ];
+            const randomLegendary = legendaryPokemon[Math.floor(Math.random() * legendaryPokemon.length)];
+            gameState.shop[i] = { ...pokemonDataL[randomLegendary], id: generateUniqueId() };
+        } else {
+            const basePokemon = [
+                'Bulbasaur', 'Charmander', 'Squirtle', 'Caterpie', 'Weedle', 'Pidgey',
+                'Dratini', 'Gastly', 'Geodude', 'Bellsprout', 'Machop', 'Abra',
+                'Poliwag', 'Oddish', 'NidoranM', 'NidoranF'
+            ];
+            const randomPokemon = basePokemon[Math.floor(Math.random() * basePokemon.length)];
+            gameState.shop[i] = { ...pokemonData[randomPokemon], id: generateUniqueId() };
+        }
     }
     
     renderShop();

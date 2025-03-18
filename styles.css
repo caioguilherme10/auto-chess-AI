@@ -716,6 +716,20 @@ button:disabled {
     background-image: linear-gradient(to bottom, #9C27B0, #7B1FA2);
 }
 
+/* Gold cost indicator for 30 gold (legendary Pokemon) */
+[data-cost="30"] .pokemon-cost {
+    background-color: #FFD700;
+    background-image: linear-gradient(to bottom, #FFD700, #FFA500);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+    100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+}
+
 .pokemon:hover .pokemon-cost {
     transform: scale(1.1) rotate(-5deg);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
