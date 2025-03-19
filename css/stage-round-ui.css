@@ -36,7 +36,7 @@
 
 .stage, .round {
     font-weight: 600;
-    color: #bdcad6;
+    color: #ffffff;
     display: flex;
     align-items: center;
     position: relative;
@@ -60,7 +60,7 @@
 }
 
 #stage-amount, #round-amount, #max-rounds {
-    color: #8e44ad;
+    color: #ffffff;
     font-size: 1.2em;
     font-weight: 700;
     transition: all 0.3s ease;

@@ -1,22 +1,3 @@
-.progress-container {
-    display: flex;
-    gap: 15px;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 8px 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.stage, .round {
-    font-weight: bold;
-    color: #333;
-}
-
-#stage-amount, #round-amount, #max-rounds {
-    color: #e91e63;
-    font-size: 1.1em;
-}
-
 .battle-result {
     position: fixed;
     top: 50%;

@@ -1,0 +1,375 @@
+.cell {
+    background-color: #34495e;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #3c5a76;
+}
+/* ... estilos para .bench-slot, .shop-slot, .pokemon, botões, etc. ... */
+
+.bench {
+    display: flex;
+    gap: 10px;
+    background-color: #7f8c8d;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 100px;
+    flex: 1;
+}
+.shop {
+    display: flex;
+    gap: 10px;
+    background-color: #8e44ad;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.gold, .health, .level { 
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+.trash-bin {
+    width: 100px;
+    height: 120px;
+    background-color: #e74c3c;
+    background-image: linear-gradient(to bottom, #e74c3c, #c0392b);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.buy-exp {
+    width: 100px;
+    height: 120px;
+    background-color: #27ae60;
+    background-image: linear-gradient(to bottom, #2ecc71, #27ae60);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.refresh-shop {
+    width: 100px;
+    height: 120px;
+    background-color: #9b59b6;
+    background-image: linear-gradient(to bottom, #9b59b6, #8e44ad);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.trash-bin:hover, .buy-exp:hover, .refresh-shop:hover::before { /*juntando seletores*/
+    opacity: 1;
+}
+.trash-bin:hover {
+    background-color: #c0392b;
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+}
+
+.buy-exp:hover {
+    background-color: #27ae60;
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+}
+
+.refresh-shop:hover {
+    background-color: #8e44ad;
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(155, 89, 182, 0.5);
+}
+
+.buy-exp::before, .trash-bin::before, .refresh-shop::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.buy-exp-label, .trash-bin-label, .refresh-shop-label {
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+.trash-bin.drag-over {
+    background-color: #c0392b;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.bench-slot {
+    width: 100px;
+    height: 120px;
+    background-color: #95a5a6;
+    background-image: linear-gradient(to bottom, #95a5a6, #7f8c8d);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.bench-slot::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bench-slot:hover {
+    background-color: #7f8c8d;
+    background-image: linear-gradient(to bottom, #7f8c8d, #6d7b7c);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bench-slot:hover::before {
+    opacity: 1;
+}
+
+.bench-slot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.bench-slot:hover::after {
+    transform: translateX(100%);
+}
+
+.shop-slot {
+    width: 100px;
+    height: 120px;
+    background-color: #9b59b6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.shop-slot:hover {
+    background-color: #8e44ad;
+}
+
+.pokemon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pokemon:hover {
+    transform: scale(1.05);
+}
+.pokemon img {
+    max-width: 100%;
+    max-height: 70%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+    animation: float 3s ease-in-out infinite;
+}
+.pokemon:hover img {
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    transform: translateY(-3px);
+}
+.pokemon-name {
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    margin-top: 5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.pokemon:hover .pokemon-name {
+    transform: scale(1.1);
+}
+
+.pokemon-level {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: gold;
+    background-image: linear-gradient(to bottom, gold, #e6c200);
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.pokemon:hover .pokemon-level {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-cost {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+    color: #333;
+}
+
+/* Green cost indicator for 1 gold */
+[data-cost="1"] .pokemon-cost {
+    background-color: #4CAF50;
+    background-image: linear-gradient(to bottom, #4CAF50, #388E3C);
+}
+
+/* Blue cost indicator for 2 gold */
+[data-cost="2"] .pokemon-cost {
+    background-color: #2196F3;
+    background-image: linear-gradient(to bottom, #2196F3, #1976D2);
+}
+
+/* Purple cost indicator for 3 gold */
+[data-cost="3"] .pokemon-cost {
+    background-color: #9C27B0;
+    background-image: linear-gradient(to bottom, #9C27B0, #7B1FA2);
+}
+
+/* Gold cost indicator for 30 gold (legendary Pokemon) */
+[data-cost="30"] .pokemon-cost {
+    background-color: #FFD700;
+    background-image: linear-gradient(to bottom, #FFD700, #FFA500);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: pulse-gold 2s infinite;
+}
+
+.pokemon:hover .pokemon-cost {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+.health-bar {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(231, 76, 60, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.health-bar-fill {
+    height: 100%;
+    background-color: #2ecc71;
+    background-image: linear-gradient(to right, #2ecc71, #27ae60);
+    width: 100%;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+}
+.health-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    animation: health-shine 2s infinite linear;
+}
+.type-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}

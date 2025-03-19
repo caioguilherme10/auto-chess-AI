@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Auto Chess</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="styles-update.css">
-    <link rel="stylesheet" href="stage-round-ui.css">
-    <link rel="stylesheet" href="player-stats-ui.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pokemon-info.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link rel="stylesheet" href="css/game-over.css">
+    <link rel="stylesheet" href="css/player-stats-ui.css">
+    <link rel="stylesheet" href="css/stage-round-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,34 +20,34 @@
         <div class="header">
             <h1>Pokémon Auto Chess</h1>
             <div class="player-stats">
-                <div class="stat-container gold-container">
-                    <div class="stat-icon">
-                        <img src="image/gold-icon.svg" alt="Gold Icon" width="24" height="24">
+                <div class="header-stat-container gold-container">
+                    <div class="header-stat-icon">
+                        <img src="image/icon/gold-icon.svg" alt="Gold Icon" width="24" height="24">
                     </div>
-                    <div class="stat-text">
-                        <span class="stat-label">Gold:</span>
-                        <span class="stat-value" id="gold-amount">10</span>
+                    <div class="header-stat-text">
+                        <span class="header-stat-label">Gold:</span>
+                        <span class="header-stat-value" id="gold-amount">10</span>
                     </div>
                 </div>
-                <div class="stat-container health-container">
-                    <div class="stat-icon">
-                        <img src="image/health-icon.svg" alt="Health Icon" width="24" height="24">
+                <div class="header-stat-container health-container">
+                    <div class="header-stat-icon">
+                        <img src="image/icon/health-icon.svg" alt="Health Icon" width="24" height="24">
                     </div>
-                    <div class="stat-text">
-                        <span class="stat-label">Health:</span>
-                        <span class="stat-value" id="health-amount">100</span>
+                    <div class="header-stat-text">
+                        <span class="header-stat-label">Health:</span>
+                        <span class="header-stat-value" id="health-amount">100</span>
                     </div>
                     <div class="progress-bar-container">
                         <div class="progress-bar health-bar"></div>
                     </div>
                 </div>
-                <div class="stat-container level-container">
-                    <div class="stat-icon">
-                        <img src="image/level-icon.svg" alt="Level Icon" width="24" height="24">
+                <div class="header-stat-container level-container">
+                    <div class="header-stat-icon">
+                        <img src="image/icon/level-icon.svg" alt="Level Icon" width="24" height="24">
                     </div>
-                    <div class="stat-text">
-                        <span class="stat-label">Level:</span>
-                        <span class="stat-value" id="player-level">1</span>
+                    <div class="header-stat-text">
+                        <span class="header-stat-label">Level:</span>
+                        <span class="header-stat-value" id="player-level">1</span>
                     </div>
                     <div class="progress-bar-container">
                         <div class="progress-bar level-bar"></div>
@@ -135,7 +139,7 @@
                 <h2>Bench</h2>
                 <div class="bench-area">
                     <div class="trash-bin" id="trash-bin">
-                        <img src="image/trash-bin.svg" alt="Trash Bin" width="40" height="40">
+                        <img src="image/icon/trash-bin.svg" alt="Trash Bin" width="40" height="40">
                         <div class="trash-bin-label">Sell</div>
                     </div>
                     <div class="bench" id="player-bench">
@@ -156,7 +160,7 @@
                 <h2>Shop</h2>
                 <div class="shop-area">
                     <div class="buy-exp" id="buy-exp">
-                        <img src="image/buy-exp.svg" alt="Buy EXP" width="40" height="40">
+                        <img src="image/icon/buy-exp.svg" alt="Buy EXP" width="40" height="40">
                         <div class="buy-exp-label">Buy EXP (4 Gold)</div>
                     </div>
                     <div class="shop" id="pokemon-shop">
@@ -167,7 +171,7 @@
                         <div class="shop-slot" data-shop="4"></div>
                     </div>
                     <div class="refresh-shop" id="refresh-shop">
-                        <img src="image/refresh-shop.svg" alt="Refresh Shop" width="40" height="40">
+                        <img src="image/icon/refresh-shop.svg" alt="Refresh Shop" width="40" height="40">
                         <div class="refresh-shop-label">Refresh (2 Gold)</div>
                     </div>
                 </div>
