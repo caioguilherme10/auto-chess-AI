@@ -260,4 +260,5 @@ Critical hits have a base chance of 6.25%, which can increase based on the attac
 
   - Tela de vitoria(quando restarta o game no button da vitoria, o canvas fica travado não terminar de acontecer)
   - Troca de Montros(quando um montro sai do campo de batalha para o bench para upar para outro nivel o montro que tava no bench some, o bench tem que ta lotado)
-  - os efeitos dos danos dos montros esttão fixo em um lugar, era para estar fixo na pocição do montro e não da tela.
+  - Os efeitos dos danos dos montros esttão fixo em um lugar, era para estar fixo na pocição do montro e não da tela.
+  - Ao terminar os 7 stages e 6 rodadas, o valor do stage vai para 8 e rodada para 1, algo que não era para aconter

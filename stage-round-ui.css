@@ -1,0 +1,112 @@
+/* Stage and Round UI Enhancement */
+
+.progress-container {
+    display: flex;
+    gap: 15px;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.progress-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+}
+
+.progress-container.animate::after {
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.stage, .round {
+    font-weight: 600;
+    color: #bdcad6;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.stage::before, .round::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.stage::before {
+    background-color: #e74c3c;
+}
+
+.round::before {
+    background-color: #3498db;
+}
+
+#stage-amount, #round-amount, #max-rounds {
+    color: #8e44ad;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+/* Progress indicators */
+.stage-progress, .round-progress {
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.stage-progress-bar, .round-progress-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease-out;
+}
+
+.stage-progress-bar {
+    background-color: #e74c3c;
+}
+
+.round-progress-bar {
+    background-color: #3498db;
+}
+
+/* Animation for stage/round change */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.stage-change #stage-amount,
+.round-change #round-amount {
+    animation: pulse 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .progress-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+}

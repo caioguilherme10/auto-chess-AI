@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="styles-update.css">
+    <link rel="stylesheet" href="stage-round-ui.css">
+    <link rel="stylesheet" href="player-stats-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,9 +16,39 @@
         <div class="header">
             <h1>Pokémon Auto Chess</h1>
             <div class="player-stats">
-                <div class="gold">Gold: <span id="gold-amount">10</span></div>
-                <div class="health">Health: <span id="health-amount">100</span></div>
-                <div class="level">Level: <span id="player-level">1</span></div>
+                <div class="stat-container gold-container">
+                    <div class="stat-icon">
+                        <img src="image/gold-icon.svg" alt="Gold Icon" width="24" height="24">
+                    </div>
+                    <div class="stat-text">
+                        <span class="stat-label">Gold:</span>
+                        <span class="stat-value" id="gold-amount">10</span>
+                    </div>
+                </div>
+                <div class="stat-container health-container">
+                    <div class="stat-icon">
+                        <img src="image/health-icon.svg" alt="Health Icon" width="24" height="24">
+                    </div>
+                    <div class="stat-text">
+                        <span class="stat-label">Health:</span>
+                        <span class="stat-value" id="health-amount">100</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar health-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-container level-container">
+                    <div class="stat-icon">
+                        <img src="image/level-icon.svg" alt="Level Icon" width="24" height="24">
+                    </div>
+                    <div class="stat-text">
+                        <span class="stat-label">Level:</span>
+                        <span class="stat-value" id="player-level">1</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar level-bar"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -167,6 +199,7 @@
     <script src="js/dragDrop.js"></script>
     <script src="js/damageCalculation.js"></script>
     <script src="js/battleSystem.js"></script>
+    <script src="js/player-stats-ui.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

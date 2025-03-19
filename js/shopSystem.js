@@ -5,25 +5,54 @@ function refreshShop() {
     // Clear current shop
     gameState.shop = Array(5).fill(null);
     
-    // Fill with random Pokemon
+    // Categorize Pokemon by cost tier
+    const greenTierPokemon = []; // cost 1
+    const blueTierPokemon = [];  // cost 2
+    const purpleTierPokemon = []; // cost 3
+    const goldTierPokemon = [    // legendary
+        'Articuno', 'Zapdos', 'Moltres', 'Mew', 'Mewtwo'
+    ];
+    
+    // Categorize base Pokemon by their cost
+    for (const pokemonName in pokemonData) {
+        const pokemon = pokemonData[pokemonName];
+        // Only include base (level 1) Pokemon in the shop
+        if (pokemon.level === 1) {
+            if (pokemon.cost === 1) {
+                greenTierPokemon.push(pokemonName);
+            } else if (pokemon.cost === 2) {
+                blueTierPokemon.push(pokemonName);
+            } else if (pokemon.cost === 3) {
+                purpleTierPokemon.push(pokemonName);
+            }
+        }
+    }
+    
+    // Fill shop with Pokemon based on tier probabilities
     for (let i = 0; i < 5; i++) {
-        // Small chance (5%) to get a legendary Pokemon
-        const isLegendary = Math.random() < 0.05;
+        const randomValue = Math.random() * 100;
         
-        if (isLegendary) {
-            const legendaryPokemon = [
-                'Articuno', 'Zapdos', 'Moltres', 'Mew', 'Mewtwo'
-            ];
-            const randomLegendary = legendaryPokemon[Math.floor(Math.random() * legendaryPokemon.length)];
-            gameState.shop[i] = { ...pokemonDataL[randomLegendary], id: generateUniqueId() };
-        } else {
-            const basePokemon = [
-                'Bulbasaur', 'Charmander', 'Squirtle', 'Caterpie', 'Weedle', 'Pidgey',
-                'Dratini', 'Gastly', 'Geodude', 'Bellsprout', 'Machop', 'Abra',
-                'Poliwag', 'Oddish', 'NidoranM', 'NidoranF'
-            ];
-            const randomPokemon = basePokemon[Math.floor(Math.random() * basePokemon.length)];
+        // 45% chance for green tier (cost 1)
+        // 30% chance for blue tier (cost 2)
+        // 20% chance for purple tier (cost 3)
+        // 5% chance for gold tier (legendary)
+        
+        if (randomValue < 45) {
+            // Green tier (cost 1)
+            const randomPokemon = greenTierPokemon[Math.floor(Math.random() * greenTierPokemon.length)];
             gameState.shop[i] = { ...pokemonData[randomPokemon], id: generateUniqueId() };
+        } else if (randomValue < 75) {
+            // Blue tier (cost 2)
+            const randomPokemon = blueTierPokemon[Math.floor(Math.random() * blueTierPokemon.length)];
+            gameState.shop[i] = { ...pokemonData[randomPokemon], id: generateUniqueId() };
+        } else if (randomValue < 95) {
+            // Purple tier (cost 3)
+            const randomPokemon = purpleTierPokemon[Math.floor(Math.random() * purpleTierPokemon.length)];
+            gameState.shop[i] = { ...pokemonData[randomPokemon], id: generateUniqueId() };
+        } else {
+            // Gold tier (legendary)
+            const randomLegendary = goldTierPokemon[Math.floor(Math.random() * goldTierPokemon.length)];
+            gameState.shop[i] = { ...pokemonDataL[randomLegendary], id: generateUniqueId() };
         }
     }
     

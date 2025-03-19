@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Gold coin icon -->
+  <symbol id="gold-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="#f1c40f" stroke="#f39c12" stroke-width="1"/>
+    <circle cx="12" cy="12" r="8" fill="#f39c12" stroke="#f1c40f" stroke-width="0.5"/>
+    <text x="12" y="16" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">$</text>
+  </symbol>
+  
+  <!-- Health heart icon -->
+  <symbol id="health-icon" viewBox="0 0 24 24">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+  </symbol>
+  
+  <!-- Level star icon -->
+  <symbol id="level-icon" viewBox="0 0 24 24">
+    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#3498db" stroke="#2980b9" stroke-width="1"/>
+  </symbol>
+</svg>

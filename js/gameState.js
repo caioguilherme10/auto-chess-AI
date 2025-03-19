@@ -62,14 +62,26 @@ function initGame() {
         const progressContainer = document.createElement('div');
         progressContainer.className = 'progress-container';
         
+        // Create stage display with progress bar
         const stageDiv = document.createElement('div');
         stageDiv.className = 'stage';
-        stageDiv.innerHTML = 'Stage: <span id="stage-amount">1</span>';
+        stageDiv.innerHTML = `
+            <div>Stage: <span id="stage-amount">1</span></div>
+            <div class="stage-progress">
+                <div class="stage-progress-bar" style="width: ${(gameState.stage / 7) * 100}%"></div>
+            </div>
+        `;
         progressContainer.appendChild(stageDiv);
         
+        // Create round display with progress bar
         const roundDiv = document.createElement('div');
         roundDiv.className = 'round';
-        roundDiv.innerHTML = 'Round: <span id="round-amount">1</span>/<span id="max-rounds">3</span>';
+        roundDiv.innerHTML = `
+            <div>Round: <span id="round-amount">1</span>/<span id="max-rounds">3</span></div>
+            <div class="round-progress">
+                <div class="round-progress-bar" style="width: ${(gameState.round / gameState.maxRounds) * 100}%"></div>
+            </div>
+        `;
         progressContainer.appendChild(roundDiv);
         
         playerStats.appendChild(progressContainer);
@@ -93,8 +105,26 @@ function updateStats() {
     levelElement.textContent = gameState.level;
     
     // Update stage and round display
-    if (stageElement) stageElement.textContent = gameState.stage;
-    if (roundElement) roundElement.textContent = gameState.round;
+    if (stageElement) {
+        stageElement.textContent = gameState.stage;
+        
+        // Update stage progress bar
+        const stageProgressBar = document.querySelector('.stage-progress-bar');
+        if (stageProgressBar) {
+            stageProgressBar.style.width = `${(gameState.stage / 7) * 100}%`;
+        }
+    }
+    
+    if (roundElement) {
+        roundElement.textContent = gameState.round;
+        
+        // Update round progress bar
+        const roundProgressBar = document.querySelector('.round-progress-bar');
+        if (roundProgressBar) {
+            roundProgressBar.style.width = `${(gameState.round / gameState.maxRounds) * 100}%`;
+        }
+    }
+    
     if (maxRoundsElement) maxRoundsElement.textContent = gameState.maxRounds;
     
     // Update max board units based on level
@@ -219,8 +249,18 @@ function showVictory() {
 
 // Progress to next round or stage
 function progressStage() {
+    const progressContainer = document.querySelector('.progress-container');
+    
     // Check if we've completed all rounds in the current stage
     if (gameState.round >= gameState.maxRounds) {
+        // Add animation class for stage change
+        if (progressContainer) {
+            progressContainer.classList.add('stage-change', 'animate');
+            setTimeout(() => {
+                progressContainer.classList.remove('stage-change', 'animate');
+            }, 1000);
+        }
+        
         // Move to next stage
         gameState.stage++;
         gameState.round = 1;
@@ -245,9 +285,18 @@ function progressStage() {
             return;
         }
     } else {
+        // Add animation class for round change
+        if (progressContainer) {
+            progressContainer.classList.add('round-change', 'animate');
+            setTimeout(() => {
+                progressContainer.classList.remove('round-change', 'animate');
+            }, 1000);
+        }
+        
         // Move to next round in current stage
         gameState.round++;
     }
     
+    // Update UI
     updateStats();
 }
